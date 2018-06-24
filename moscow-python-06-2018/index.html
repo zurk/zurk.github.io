@@ -1,0 +1,1352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Алгоритм Swivel и его приложения</title>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:creator" content="@kslavnov" />
+    <meta name="twitter:label1" content="Number of slides" />
+    <meta name="twitter:data1" content="31" />
+    <meta name="twitter:label2" content="Where and when" />
+    <meta name="twitter:data2" content="Moscow, 26/06/2018" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="http://zurk.github.io/moscow-python-06-2018" />
+    <meta property="og:title" content="Алгоритм Swivel и его приложения" />
+    <meta property="og:description" content="Я расскажу вам о популярном методе построения векторных представлений для элементов последовательности, например, для слов в тексте. Такие методы применяются в машинном обучении для того, чтобы облегчить работу с категориальными признаками, коими являются, например, слова, вершины графа или любое неупорядоченное множество элементов. Для предобработки такого рода данных используются специальные методы вложения в непрерывное векторное пространство. Я расскажу об одном из таких методов Swivel, продемонстрирую как применять его в текстовых и графовых задачах, а так же расскажу как подобный подход можно применять к анализу исходного кода языка Python." />
+    <meta property="og:image" content="http://zurk.github.io/moscow-python-06-2018/pictures/cover.jpg" />
+    <meta property="twitter:image" content="http://zurk.github.io/moscow-python-06-2018/pictures/cover.jpg" />
+    <link rel="stylesheet" href="shower/themes/ribbon/styles/screen-16x10.css">
+</head>
+<body class="shower list">
+
+	<header class="caption">
+		<button type="button" id="fullscreen" title="Go fullscreen" onclick="fullscreen()"><i class="fa fa-arrows-alt"></i></button>
+		<h1>Алгоритм Swivel и его приложения</h1>
+		<p>Константин Славнов, <a href="https://sourced.tech">source{d}</a>.</p>
+	</header>
+
+	<style>
+        body {
+            -webkit-font-smoothing: antialiased;
+            -webkit-tap-highlight-color: transparent;
+        }
+        -webkit-full-screen {
+            z-index: 1;
+            height: 100%;
+        }
+        :-webkit-full-screen .full section {
+            /* fix buggy Chrome offsets */
+            margin-left: -1px !important;
+            margin-top: -1px !important;
+        }
+        @media not print {
+            .slide {
+                color: white;
+                background: black;
+            }
+            .slide h2 {
+                color: #bababa;
+            }
+        }
+        #fullscreen {
+            float: right;
+            height: 48px;
+            width: 48px;
+            background: none;
+            -webkit-appearance: none;
+            cursor: pointer;
+            border: none;
+            color: #3c3d40;
+            position: fixed;
+            right: 20px;
+        }
+        #fullscreen:hover {
+            color: #bababa;
+        }
+        #fullscreen:focus {
+            outline: none;
+        }
+        #fullscreen > i {
+            font-size: 36px;
+            text-align: center;
+        }
+        .slide p {
+            line-height: 1.25;
+        }
+        .slide::after {
+            display: none;
+        }
+        .center {
+            display: table;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        h2.bottom {
+            position: absolute;
+            bottom: 50px;
+        }
+        .important {
+            color: red;
+        }
+        .mono {
+            font-family: monospace;
+        }
+        .success {
+            color: green;
+        }
+        .vista {
+            background-size: contain !important;
+            background-repeat: no-repeat !important;
+            background-position: center !important;
+        }
+        .vista-cover {
+            background-size: cover !important;
+        }
+        i.fa {
+            font-style: normal;
+        }
+        ul.no-bullets > li::before {
+            display: none;
+            text-indent: 0;
+        }
+        ul.no-bullets > li {
+            text-indent: 0;
+        }
+		code.inline:before, code.inline-no-offset:before {
+			display: none;
+		}
+		code.inline, code.inline-no-offset {
+			padding: 0;
+		}
+		code.inline-no-offset {
+			margin-left: 0 !important;
+			padding-left: 50px !important;
+		}
+		.part-teaser {
+			text-align: center;
+			vertical-align: middle;
+			line-height: 400px !important;
+		}
+		.slide a {
+			background: none;
+		}
+		.slide a:hover {
+			background: linear-gradient(to top,currentColor .09em,transparent .09em) repeat-x;
+		}
+        img.obj-cover {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .fa {
+            display: inline;
+        }
+        ul.two-cols {
+            overflow: hidden;
+        }
+        ul.two-cols > li::before {
+            display: none;
+            text-indent: 0;
+        }
+        ul.two-cols > li {
+            text-indent: 0;
+            float: left;
+            width: 50%;
+        }
+        .monofa {
+            width: 1.5em;
+            margin-right: 0.5em;
+            display: inline-block;
+            text-align: center;
+        }
+        .fa-bullets > li {
+            margin-left: -2em;
+        }
+        .white {
+            color: white !important;
+        }
+    </style>
+
+	<section class="slide vista vista-cover" id="cover">
+        <div>
+    		<h2>Алгоритм Swivel и его приложения</h2>
+    		<p>
+                <span class="white">Константин Славнов,</span> 
+                <a href="https://sourced.tech">source{d}</a>
+            </p>
+        </div>
+
+		<style>
+            #cover h2 {
+                margin:30px 0 0;
+                text-align:center;
+                font-size:70px;
+            }
+            #cover div {
+                background: rgba(0, 0, 0, 0.3);
+                width: 100%
+            }
+            #cover p {
+                margin: 40px 0 0;
+                text-align:center;
+                font-style:italic;
+                font-size:20px;
+            }
+			#cover {
+				background: url("pictures/cover.png") black;
+                background-size: cover;
+			}
+			#cover h2:before {
+				content: "";
+				position: absolute;
+				z-index: -1;
+				left: 0;
+				top: 0;
+				right: 0;
+				bottom: 0;
+				background: rgba(0, 0, 0, 0);
+			}
+            #cover > h2 {
+                color: #bababa !important;
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2>Категориальные признаки</h2>
+        Любые признаки <span class="important">без порядка</span>. Как с ними работать?
+        <ul class="no-bullets fa-bullets">
+            <li><span class="monofa">🗺</span>Города, страны</li>
+            <li><span class="monofa">📖</span>Тексты</li>
+            <li><span class="monofa">🕸</span>Графы</li>
+            <li><span class="monofa">•</span>...</li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2>Кодируем!</h2>
+        <ul class="fa-bullets">
+            <li>One-hot-encoding</li>
+            <li>Хэширование</li>
+            <li>Кодирование вещественным признаком</li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2>One-hot-encoding</h2>
+        <ul class="no-bullets fa-bullets">
+            <li><span class="monofa">🍒</span> ⇒ <span id="leftspace">\([\;1,\; 0,\; 0\;]\)</span></li>
+            <li><span class="monofa">🍑</span> ⇒ <span id="leftspace">\([\;0,\; 1,\; 0\;]\)</span></li>
+            <li><span class="monofa">🍏</span> ⇒ <span id="leftspace">\([\;0,\; 0,\; 1\;]\)</span></li>
+        </ul>
+
+        <style>
+            #leftspace {
+                padding: 20px;
+            }
+        </style>
+    </section>
+
+        <section class="slide">
+        <h2>One-hot-encoding</h2>
+        <ul class="no-bullets fa-bullets">
+            <li><span class="monofa">🍒</span> ⇒ <span id="leftspace">\([\;1,\; 0,\; 0\;]\)</span></li>
+            <li><span class="monofa">🍑</span> ⇒ <span id="leftspace">\([\;0,\; 1,\; 0\;]\)</span></li>
+            <li><span class="monofa">🍏</span> ⇒ <span id="leftspace">\([\;0,\; 0,\; 1\;]\)</span></li>
+        </ul>
+$$
+\begin{bmatrix}
+    🍒 & 2 & 0.5  \\
+    🍑 & 1 & 0.75 \\
+    🍑 & 3 & 0.9  \\
+    \vdots & \vdots & \vdots \\
+    🍏 & 5 & 0.2 \\
+\end{bmatrix}
+\quad \Longrightarrow \quad
+\begin{bmatrix}
+    1 & 0 & 0 & 2 & 0.5  \\
+    0 & 1 & 0 & 1 & 0.75 \\
+    0 & 1 & 0 & 3 & 0.9  \\
+    \vdots & \vdots & \vdots & \vdots & \vdots \\
+    0 & 0 & 1 & 5 & 0.2 \\
+\end{bmatrix}
+$$  
+        <style>
+            #leftspace {
+                padding: 20px;
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2>Хеширование </h2>
+        <ul class="no-bullets fa-bullets">
+            <li><span class="monofa">🍒</span> ⇒ <code id="leftspace">[ 1, 1]</code></li>
+            <li><span class="monofa">🍑</span> ⇒ <code id="leftspace">[ 0,-1]</code></li>
+            <li><span class="monofa">🍏</span> ⇒ <code id="leftspace">[ 0, 1]</code></li>
+            <li><span class="monofa">🍇</span> ⇒ <code id="leftspace">[-1, 1]</code></li>
+            <li><span class="monofa">🍓</span> ⇒ <code id="leftspace">[ 2, 0]</code></li>
+        </ul>
+        aka the hashing trick
+        <style>
+            .smallcode {
+                font-size: 85%;
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2>Хеширование в sklearn</h2>
+        <code class="smallcode">
+            <span class="hl-keyword">from</span> sklearn.feature_extraction <span class="hl-keyword">import</span> FeatureHasher <br>
+            fruits = [<span class="hl-string">"cherry"</span>, <span class="hl-string">"peach"</span>, <span class="hl-string">"apple"</span>, <span class="hl-string">"grapes"</span>, <span class="hl-string">"strawberry"</span>] <br>
+            hasher = FeatureHasher(n_features=<span class="hl-number">2</span>, input_type=<span class="hl-string">"string"</span>) <br>
+            hasher.transform(fruits)
+        </code>
+        <style>
+            .smallcode {
+                padding: .0em .0em !important;
+                font-size: 85%;
+            }
+
+            .hl-keyword {
+                color: #cc8242;
+                font-weight: bold;
+            }
+            .hl-def {
+                color: #ffc66d;
+            }
+            .hl-reserved {
+                color: #94558D;
+            }
+            .hl-string {
+                color: #6a8759;
+            }
+            .hl-number {
+                color: #6a87ff;
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2>Кодирование вещественным признаком</h2>
+        <ul class="no-bullets fa-bullets">
+            <li><span class="monofa">🍒</span> ⇒ <code id="leftspace">250</code></li>
+            <li><span class="monofa">🍑</span> ⇒ <code id="leftspace">150</code></li>
+            <li><span class="monofa">🍏</span> ⇒ <code id="leftspace">100</code></li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2>Кодирование вещественным признаком</h2>
+        <ul class="no-bullets fa-bullets">
+            <li><span class="monofa">🍒</span> ⇒ <code id="leftspace">250</code></li>
+            <li><span class="monofa">🍑</span> ⇒ <code id="leftspace">150</code></li>
+            <li><span class="monofa">🍏</span> ⇒ <code id="leftspace">100</code></li>
+        </ul>
+$$
+\begin{bmatrix}
+    🍒 & 2 & 0.5  \\
+    🍑 & 1 & 0.75 \\
+    🍑 & 3 & 0.9  \\
+    \vdots & \vdots & \vdots \\
+    🍏 & 5 & 0.2 \\
+\end{bmatrix}
+\;
+\begin{bmatrix}
+    250 \\
+    100 \\
+    200 \\
+    \vdots \\
+    100 \\
+\end{bmatrix}
+\quad \Longrightarrow \quad
+\begin{bmatrix}
+    1 & 0 & 0 & 2 & 0.5  \\
+    0 & 1 & 0 & 1 & 0.75 \\
+    0 & 1 & 0 & 3 & 0.9  \\
+    \vdots & \vdots & \vdots & \vdots & \vdots \\
+    0 & 0 & 1 & 5 & 0.2 \\
+\end{bmatrix}
+\;
+\begin{bmatrix}
+    250 \\
+    100 \\
+    200 \\
+    \vdots \\
+    100 \\
+\end{bmatrix}
+$$
+    </section>
+
+    <section class="slide">
+        <h2>Итог</h2>
+        <ul class="no-bullets fa-bullets">
+            <li><span class="monofa">☑️</span> Быстро</li>
+            <li><span class="monofa">☑️</span> С любыми признаками</li>
+            <li><span class="monofa">❌</span> Не конструктивно</li>
+        </ul>
+
+        Если у признака есть структура – ее можно ипользовать.
+    </section>
+
+    <section class="slide" id="tf-ids">
+        <h2>Векторные вложения 🎉</h2>
+            <p>tensorflow fa-floppy-oat unaligned vector ttypes
+            types const unaligned vec int unaligned vector ttypes types int const
+            unaligned vec example statistics norm normalized squared regularizations
+            regularizations status initialize construction kernel opkernel context
+            error iferror return tfreturn context attr get symmetric error iferror
+            return tfreturn context attr get symmetric shrinkage symmetric symmetric
+            status shrink weight shrinked std max std abs weight shrinkage shrinked
+            std copysign shrinked weight eigen tensor eigen major row eigen shrink
+            eigen tensor eigen major row weights weights sign weights abs weights
+            constant shrinkage cwise max weights
+            constant shrinkage cwise max weights constant symmetric symmetric
+            symmetric symmetric shrinkage and assign copy disallow tfdisallow
+            regularizations model weights example example statistics and compute
+            example norm weighted wxand num partitions model weights model weights
+            regularizations regularization example label example label example
+            weight example weight norm squared norm squared features sparse std
+            ptr unique int unaligned vector indices std ptr unique float unaligned
+            vector values std vector features sparse features sparse
+            dense vector eigen map tensor eigen tensor eigen major row row eigen
+            map tensor eigen tensor eigen major row data matrix data index row
+            data matrix dimension data matrix dimension ttypes types const matrix
+            data matrix int index row std vector std ptr unique dense vector dense
+            vectors example label example weight norm squared examples model weights
+            model weights model weights delta update weights eigen device pool thread
+            device example example bounded delta dual normalized sparse weights size
+            example features sparse features sparse example features sparse feature
+            weights feature weights sparse weights int features sparse indices size
+            feature value features sparse values features sparse values feature
+            weights deltas features sparse indices feature value bounded delta
+            dual normalized dense weights size example dense vector dense vector
+            example dense vectors ttypes types vec deltas dense weights deltas
+            deltas device device deltas dense vector row deltas constant bounded
+            delta dual normalized status initialize context kernel opkernel context
+            input list opinput inputs sparse weights error iferror return tfreturn
+            context input list inputs sparse weights input list opinput dense
+            inputs weights error iferror return tfreturn context input list dense
+            inputs weights list opoutput output outputs sparse weights error iferror
+            return tfreturn context list output outputs sparse weights list opoutput
+            output dense outputs weights error iferror return tfreturn context
+            list output dense outputs weights intialize weights input list opinput
+            inputs weight list opoutput output outputs weight std vector feature
+            weights feature weights inputs weight size tensor delta outputs weight
+            allocate inputs weight shape delta deltas delta flat deltas set zero
+            feature weights back emplace feature weights inputs weight flat deltas
+            intialize weights inputs sparse weights outputs sparse weights sparse
+            weights intialize weights dense inputs weights dense outputs weights
+            dense weights status feature weights ttypes types vec nominals ttypes
+            types vec deltas std vector feature weights sparse weights std vector
+            feature weights dense weights example and assign copy disallow tfdisallow
+            model weights example statistics example and compute example norm weighted
+            wxand num partitions model weights model weights regularizations
+            regularization example statistics result result norm normalized squared
+            norm squared regularization symmetric features sparse size example
+            features sparse features sparse features sparse model weights feature
+            weights sparse weights model weights sparse weights int features sparse
+            indices size int feature index features sparse indices feature value
+            features sparse values features sparse values feature weight 
+            <span class="hl-number-dark">sparse weights <b>nominals</b> feature index</span>
+            sparse weights deltas feature index num partitions
+            result feature value regularization shrink feature weight dense vectors
+            size example dense vector dense vector dense vectors model weights
+            feature weights dense weights model weights dense weights eigen tensor
+            eigen major row feature weights dense weights nominals dense weights
+            deltas dense weights deltas constant num partitions eigen tensor eigen
+            major row prediction dense vector row regularization eigen shrink
+            feature weights sum result prediction result examples examples example
+            example example index examples example index examples num examples
+            size features num features num status initialize context kernel
+            opkernel context features num sparse features num sparse values with
+            dense features num features num features num sparse dense features
+            num input list opinput example indices inputs sparse error iferror
+            return tfreturn context input list example indices inputs sparse input
+            list opinput feature indices inputs sparse error iferror return
+            tfreturn context input list feature indices inputs sparse input list
+            opinput feature inputs sparse values features num sparse values with
+            error iferror return tfreturn context input list feature inputs sparse
+            values tensor example weights error iferror return tfreturn context
+            input example weights example weights example weights flat examples
+            num example weights size tensor example labels error iferror return
+            tfreturn context input example labels example labels example labels
+            flat input list opinput dense features inputs error iferror return
+            tfreturn context input list dense features inputs examples clear examples
+            </p>
+        <style>
+            #tf-ids p {
+                display: block;
+                height: 100%;
+                overflow: hidden;
+                color: #606060;
+                font-size: 0.5em;
+                line-height: 1.2;
+                font-family: monospace;
+                margin: 0;
+                text-align: justify;
+            }
+            #tf-ids h2 {
+                position: absolute;
+                left: 100px;
+                top: 106px;
+                background-color: rgba(255, 255, 255, 0.5);
+            }
+            @media not print {
+                #tf-ids h2 {
+                    background-color: rgba(0, 0, 0, 0.5);
+                }
+            }
+            #tf-ids {
+                padding: 10px 0px 15px 0px;
+            }
+            .hl-number-dark {
+                color: #3a37bf;
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2>Вложение в векторное пространство</h2>
+        <div class="math-center">
+            <p class="skip">
+\(
+\begin{split}
+\texttt{"apple"} \Leftrightarrow & \; V_1 \\
+\\
+\texttt{"peach"} \Leftrightarrow & \; V_2 \\
+\\
+\texttt{"cat"} \Leftrightarrow &  \; V_3 \\
+\\
+\mathrm{similarity}(V_1, V_2) <  & \; \mathrm{similarity}(V_1, V_3)
+\end{split}
+\)
+            </p>
+        </div>
+
+        <style>
+            .math-center {
+                font-size: 1.4em;
+            } 
+            p.skip {
+                margin-bottom: 50px;
+            }
+            @font-face {
+                font-family: "Over the Rainbow";
+                src: url("fonts/Over the Rainbow.ttf") format("ttf");
+                src: url("fonts/Over the Rainbow.woff2") format("woff2");
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2>Вложение в векторное пространство</h2>
+        <div class="math-center">
+            <p class="skip">
+\(
+\begin{split}
+\texttt{"apple"} \Leftrightarrow & \; V_1 \\
+\\
+\texttt{"peach"} \Leftrightarrow & \; V_2 \\
+\\
+\texttt{"cat"} \Leftrightarrow &  \; V_3 \\
+\\
+\mathrm{similarity}(V_1, V_2) =  & \; {V_1}^\top V_2
+\end{split}
+\)
+            </p>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout math-shout">Как оценить\({V_i}^\top V_j\) ?</h2>
+        <style>
+        .math-shout > span {
+            font-weight: inherit !important;
+            font-size: inherit !important;
+            font-family: inherit !important;
+            line-height: 1.5;
+        }
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2>Контекст - слово</h2>
+        <div id="emb_explicit_example">
+            <div>
+                Пример:<br>
+                "Слова - это всего лишь слова"<br>
+                Ширина контекста - 1.
+            </div>
+            <div class="vista">
+                <img src="pictures/coocc_example1.svg" id="emb_explicit_example_pic">
+            </div>
+        </div>
+        <style>
+            #emb_explicit_example {
+                display: flex;
+                align-items: top;
+            }
+            #emb_explicit_example_pic {
+                position: absolute;
+                right: 50px;
+                width: 400px;
+                height: 400px;
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2>Контекст - слово</h2>
+        <div id="emb_explicit_example">
+            <div>
+                Пример:<br>
+                "<span class="hl-number"><b>Слова</b> - это</span> всего лишь слова."<br>
+            </div>
+            <div class="vista">
+                <img src="pictures/coocc_example2.svg" id="emb_explicit_example_pic">
+            </div>
+        </div>
+        </style>
+    </section>
+    <section class="slide">
+        <h2>Контекст - слово</h2>
+        <div id="emb_explicit_example">
+            <div>
+                Пример:<br>
+                "<span class="hl-number">Слова -<b> это</b> всего</span> лишь слова."<br>
+            </div>
+            <div class="vista">
+                <img src="pictures/coocc_example3.svg" id="emb_explicit_example_pic">
+            </div>
+        </div>
+        </style>
+    </section>
+    <section class="slide">
+        <h2>Контекст - слово</h2>
+        <div id="emb_explicit_example">
+            <div>
+                Пример:<br>
+                "Слова - <span class="hl-number">это <b>всего</b> лишь</span> слова."<br>
+            </div>
+            <div class="vista">
+                <img src="pictures/coocc_example4.svg" id="emb_explicit_example_pic">
+            </div>
+        </div>
+        </style>
+    </section>
+    <section class="slide">
+        <h2>Контекст - слово</h2>
+        <div id="emb_explicit_example">
+            <div>
+                Пример:<br>
+                "Слова  - это <span class="hl-number">всего <b>лишь</b> слова</span>."<br>
+            </div>
+            <div class="vista">
+                <img src="pictures/coocc_example5.svg" id="emb_explicit_example_pic">
+            </div>
+        </div>
+        </style>
+    </section>
+    <section class="slide">
+        <h2>Контекст - слово</h2>
+        <div id="emb_explicit_example">
+            <div>
+                Пример:<br>
+                "Слова  - это всего <span class="hl-number">лишь <b>слова</b></span>."<br>
+            </div>
+            <div class="vista">
+                <img src="pictures/coocc_example6.svg" id="emb_explicit_example_pic">
+            </div>
+        </div>
+        </style>
+    </section>
+    <section class="slide">
+        <h2>Как оценить\({V_i}^\top V_j\) ?</h2>
+        <div id="emb_explicit_example">
+            <div>
+                Пример:<br>
+                "Слова  - это всего лишь слова."<br><br>
+                \(\qquad{V_i}^\top V_j = \mathrm{PMI}(A)_{ij}\)
+            </div>
+            <div class="vista">
+                <img src="pictures/coocc_example6.svg" id="emb_explicit_example_pic">
+            </div>
+        </div>
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2>Как оценить\({V_i}^\top V_j\) ?</h2>
+        <div id="emb_explicit_example">
+            <div>
+                <p>Pointwise mutual information:</p>
+                \(\mathrm{PMI} (x;y) \equiv \log {\dfrac {p(x,\,y)}{p(x)\,p(y)}}.\)
+            </div>
+            <div class="vista">
+                <img src="pictures/coocc_example6.svg" id="emb_explicit_example_pic">
+            </div>
+        </div>
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2>Как оценить\({V_i}^\top V_j\) ?</h2>
+        <div id="emb_explicit_example">
+            <div>
+                <p>Pointwise mutual information:</p>
+                \(
+                \mathrm{PMI} (x;y) \equiv \log {\dfrac {p(x,\,y)}{p(x)\,p(y)}}. \\[20pt]
+                x = это \quad y = лишь \\
+                \dfrac {p(это,\, лишь)}{p(это)\,p(лишь)} = \dfrac {0}{1/4 \,\cdot\, 1/4} = 0. \\
+                \)
+            </div>
+            <div class="vista">
+                <img src="pictures/coocc_example6.svg" id="emb_explicit_example_pic">
+            </div>
+        </div>
+        </style>
+    </section>
+
+    <section class="slide">
+    <h2>Как оценить\({V_i}^\top V_j\) ?</h2>
+    <div id="emb_explicit_example">
+        <div>
+            <p>Pointwise mutual information:</p>
+            \(
+            \mathrm{PMI} (x;y) \equiv \log {\dfrac {p(x,\,y)}{p(x)\,p(y)}}. \\[20pt]
+            x = это \quad y = всего \\
+            \dfrac {p(это,\, всего)}{p(это)\,p(всего)} = \dfrac {1/8}{1/4 \,\cdot\, 1/4} = 2. \\
+            \)
+        </div>
+        <div class="vista">
+            <img src="pictures/coocc_example6.svg" id="emb_explicit_example_pic">
+        </div>
+    </div>
+    </style>
+    </section>
+
+    <section class="slide">
+            <h2 style="font-size:320%;padding-top: 100px">\({V_i}^\top V_j \approx \log {\dfrac {p(x,\,y)}{p(x)\,p(y)}}\)</h2>
+    </section>
+
+    <section class="slide">
+        <h2>Векторное представление. Итог.</h2>
+        <ul>
+            <li>Снижает размерность данных.</li>
+            <li>Похожий контекст - похожие вектора.</li>
+            <li>Логический вывод: \(V(девушка) − V(парень) ≃ V(королева) − V(король)\).</li>
+        </ul>
+    </section>
+
+    <section class="slide vista vista-cover" id="powerful">
+        <h2>Быстро. Мощно.</h2>
+        <style>
+            #powerful {
+                background-image: url("pictures/power.jpg");
+            }
+            #powerful h2 {
+                color: #000;
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2>Примеры моделей.</h2>
+        <ul>
+            <li>Word2vec - <a href="https://arxiv.org/pdf/1310.4546.pdf">Статья на ArXiV</a>, <a href="https://github.com/facebookresearch/fastText">fastText</a>.</li>
+            <li>GloVe - <a href="https://nlp.stanford.edu/pubs/glove.pdf">Статья</a>, <a href="https://nlp.stanford.edu/projects/glove/">реализация</a>.    </li>
+            <li>Swivel - <a href="https://arxiv.org/pdf/1602.02215.pdf">Статья на ArXiV</a>, <a href="https://github.com/tensorflow/models/tree/master/research/swivel">реализация на tensorflow</a>, <a href="https://github.com/src-d/ml/blob/master/sourced/ml/algorithms/swivel.py">наш форк</a>. </li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2>Swivel</h2>
+        <ul class="no-bullets fa-bullets">
+            <li><span class="monofa">✅</span>Работает с матрицей слово-контекст</li>
+            <li><span class="monofa">✅</span>Обсчитывается на GPU (нескольких)</li>
+            <li><span class="monofa">✅</span>Масштабируется с размером словаря</li>
+            <li><span class="monofa">✅</span>Шардинг</li>
+        </ul>       
+    </section>
+
+    <section class="slide">
+        <h2>Swivel sharding</h2>
+        <img src="pictures/swivel.png" id="swivel1">
+        <style>
+            #swivel1 {
+                height: 300px;
+                object-fit: contain;
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2>Swivel sharding</h2>
+        <img src="pictures/swivel_sharding.png" id="swivel2">
+        <style>
+            #swivel2 {
+                height: 400px;
+                object-fit: contain;
+            }
+        </style>
+    </section>
+
+    <section class="slide" id="cover_code">
+        <h2 class="shout" id="cover_code_title">Анализируем<br>код</h2>
+        <style>
+            #cover_code {
+                background: url("pictures/code.jpg") black;
+                background-size: cover;
+            }
+            #cover_code_title {
+                background: rgba(0,0,0,0.8);
+                }
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2>Id2Vec</h2>
+        Строим векторное представление для идентификаторов в коде. <br>
+        <span class="important">Как построить матрицу слово-контекст \(A_{ij}\)?</span>
+    </section>
+
+    <section class="slide">
+        <pre><code><span class="hl-keyword">class</span> Database:</code>
+<code>    <span class="hl-keyword">def</span> <span class="hl-def">connect</span>(<span class="hl-reserved">self</span>, user, password, host, port):</code>
+<code>        <span class="hl-reserved">self</span>._tcp_socket_connect(host, port)</code>
+<code>        <span class="hl-keyword">try</span>:</code>
+<code>            <span class="hl-reserved">self</span>._authenticate(user, password)</code>
+<code>        <span class="hl-keyword">except</span> AuthenticationError <span class="hl-keyword">as</span> e:</code>
+<code>            <span class="hl-reserved">self</span>.socket.close()</code>
+<code>            <span class="hl-keyword">raise</span> e <span class="hl-keyword">from None</span></code>
+        </pre>
+    </section>
+
+    <section class="slide">
+        <h2>Предобработка</h2>
+        <pre>
+            <code>_tcp_socket_connect -> [tcp, socket, connect]</code>
+            <code>AuthenticationError -> [authentication, error]</code>
+            <code>authentication, authenticate -> authenticate</code>
+        </pre>
+    </section>
+
+    <section class="slide">
+            <pre><code><span class="hl-keyword">class</span> Database:</code>
+<code>    <span class="hl-keyword">def</span> <span class="hl-def">connect</span>(<span class="hl-reserved">self</span>, user, password, host, port):</code>
+<code>        <span class="hl-reserved">self</span>._tcp_socket_connect(host, port)</code>
+<code>        <span class="hl-keyword">try</span>:</code>
+<code>            <span class="hl-reserved">self</span>._authenticate(user, password)</code>
+<code>        <span class="hl-keyword">except</span> AuthenticationError <span class="hl-keyword">as</span> e:</code>
+<code>            <span class="hl-reserved">self</span>.socket.close()</code>
+<code>            <span class="hl-keyword">raise</span> e <span class="hl-keyword">from None</span></code>
+        </pre>
+        <p class="keywords">database, connect<sup>2</sup>, user<sup>2</sup>, password<sup>2</sup>, host<sup>2</sup>, port<sup>2</sup>, tcp, socket<sup>2</sup>, authenticate<sup>2</sup>, error, close </p>
+        <div class="context ctx1"></div>
+        <style>
+            .keywords {
+                font-family: monospace;
+            }
+            .keywords::before {
+                content: ">>>";
+                position: absolute;
+                margin-left: -2.2em;
+            }
+            .context {
+                position: absolute;
+                border: 5px dashed #979a9e;
+                border-radius: 10px;
+            }
+            .ctx1 {
+                width: 760px;
+                height: 392px;
+                top: 110px;
+                left: 93px;
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+            <pre><code><span class="hl-keyword">class</span> Database:</code>
+<code>    <span class="hl-keyword">def</span> <span class="hl-def">connect</span>(<span class="hl-reserved">self</span>, user, password, host, port):</code>
+<code>        <span class="hl-reserved">self</span>._tcp_socket_connect(host, port)</code>
+<code>        <span class="hl-keyword">try</span>:</code>
+<code>            <span class="hl-reserved">self</span>._authenticate(user, password)</code>
+<code>        <span class="hl-keyword">except</span> AuthenticationError <span class="hl-keyword">as</span> e:</code>
+<code>            <span class="hl-reserved">self</span>.socket.close()</code>
+<code>            <span class="hl-keyword">raise</span> e <span class="hl-keyword">from None</span></code>
+        </pre>
+        <p class="keywords">connect<sup>2</sup>, user<sup>2</sup>, password<sup>2</sup>, host<sup>2</sup>, port<sup>2</sup>, tcp, socket<sup>2</sup>, authenticate<sup>2</sup>, error, close </p>
+        <div class="context ctx2"></div>
+        <style>
+            .ctx2 {
+                width: 700px;
+                height: 352px;
+                top: 156px;
+                left: 153px;
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+            <pre><code><span class="hl-keyword">class</span> Database:</code>
+<code>    <span class="hl-keyword">def</span> <span class="hl-def">connect</span>(<span class="hl-reserved">self</span>, user, password, host, port):</code>
+<code>        <span class="hl-reserved">self</span>._tcp_socket_connect(host, port)</code>
+<code>        <span class="hl-keyword">try</span>:</code>
+<code>            <span class="hl-reserved">self</span>._authenticate(user, password)</code>
+<code>        <span class="hl-keyword">except</span> AuthenticationError <span class="hl-keyword">as</span> e:</code>
+<code>            <span class="hl-reserved">self</span>.socket.close()</code>
+<code>            <span class="hl-keyword">raise</span> e <span class="hl-keyword">from None</span></code>
+        </pre>
+        <p class="keywords">connect, user, password, host, port</p>
+        <div class="context ctx3"></div>
+        <style>
+            .ctx3 {
+                width: 700px;
+                height: 50px;
+                top: 156px;
+                left: 153px;
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+            <pre><code><span class="hl-keyword">class</span> Database:</code>
+<code>    <span class="hl-keyword">def</span> <span class="hl-def">connect</span>(<span class="hl-reserved">self</span>, user, password, host, port):</code>
+<code>        <span class="hl-reserved">self</span>._tcp_socket_connect(host, port)</code>
+<code>        <span class="hl-keyword">try</span>:</code>
+<code>            <span class="hl-reserved">self</span>._authenticate(user, password)</code>
+<code>        <span class="hl-keyword">except</span> AuthenticationError <span class="hl-keyword">as</span> e:</code>
+<code>            <span class="hl-reserved">self</span>.socket.close()</code>
+<code>            <span class="hl-keyword">raise</span> e <span class="hl-keyword">from None</span></code>
+        </pre>
+        <p class="keywords">tcp, socket, connect, host, port</p>
+        <div class="context ctx4"></div>
+        <style>
+            .ctx4 {
+                width: 555px;
+                height: 50px;
+                top: 207px;
+                left: 213px;
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+            <pre><code><span class="hl-keyword">class</span> Database:</code>
+<code>    <span class="hl-keyword">def</span> <span class="hl-def">connect</span>(<span class="hl-reserved">self</span>, user, password, host, port):</code>
+<code>        <span class="hl-reserved">self</span>._tcp_socket_connect(host, port)</code>
+<code>        <span class="hl-keyword">try</span>:</code>
+<code>            <span class="hl-reserved">self</span>._authenticate(user, password)</code>
+<code>        <span class="hl-keyword">except</span> AuthenticationError <span class="hl-keyword">as</span> e:</code>
+<code>            <span class="hl-reserved">self</span>.socket.close()</code>
+<code>            <span class="hl-keyword">raise</span> e <span class="hl-keyword">from None</span></code>
+        </pre>
+        <p class="keywords">authenticate<sup>2</sup>, user, password, error, socket, close</p>
+        <div class="context ctx5"></div>
+        <style>
+            .ctx5 {
+                width: 585px;
+                height: 245px;
+                top: 258px;
+                left: 213px;
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+            <pre><code><span class="hl-keyword">class</span> Database:</code>
+<code>    <span class="hl-keyword">def</span> <span class="hl-def">connect</span>(<span class="hl-reserved">self</span>, user, password, host, port):</code>
+<code>        <span class="hl-reserved">self</span>._tcp_socket_connect(host, port)</code>
+<code>        <span class="hl-keyword">try</span>:</code>
+<code>            <span class="hl-reserved">self</span>._authenticate(user, password)</code>
+<code>        <span class="hl-keyword">except</span> AuthenticationError <span class="hl-keyword">as</span> e:</code>
+<code>            <span class="hl-reserved">self</span>.socket.close()</code>
+<code>            <span class="hl-keyword">raise</span> e <span class="hl-keyword">from None</span></code>
+        </pre>
+        <p class="keywords">authenticate, user, password</p>
+        <div class="context ctx6"></div>
+        <style>
+            .ctx6 {
+                width: 528px;
+                height: 50px;
+                top: 307px;
+                left: 270px;
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+            <pre><code><span class="hl-keyword">class</span> Database:</code>
+<code>    <span class="hl-keyword">def</span> <span class="hl-def">connect</span>(<span class="hl-reserved">self</span>, user, password, host, port):</code>
+<code>        <span class="hl-reserved">self</span>._tcp_socket_connect(host, port)</code>
+<code>        <span class="hl-keyword">try</span>:</code>
+<code>            <span class="hl-reserved">self</span>._authenticate(user, password)</code>
+<code>        <span class="hl-keyword">except</span> AuthenticationError <span class="hl-keyword">as</span> e:</code>
+<code>            <span class="hl-reserved">self</span>.socket.close()</code>
+<code>            <span class="hl-keyword">raise</span> e <span class="hl-keyword">from None</span></code>
+        </pre>
+        <p class="keywords">authenticate, error, socket, close</p>
+        <div class="context ctx7"></div>
+        <style>
+            .ctx7 {
+                width: 492px;
+                height: 147px;
+                top: 357px;
+                left: 213px;
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+            <pre><code><span class="hl-keyword">class</span> Database:</code>
+<code>    <span class="hl-keyword">def</span> <span class="hl-def">connect</span>(<span class="hl-reserved">self</span>, user, password, host, port):</code>
+<code>        <span class="hl-reserved">self</span>._tcp_socket_connect(host, port)</code>
+<code>        <span class="hl-keyword">try</span>:</code>
+<code>            <span class="hl-reserved">self</span>._authenticate(user, password)</code>
+<code>        <span class="hl-keyword">except</span> AuthenticationError <span class="hl-keyword">as</span> e:</code>
+<code>            <span class="hl-reserved">self</span>.socket.close()</code>
+<code>            <span class="hl-keyword">raise</span> e <span class="hl-keyword">from None</span></code>
+        </pre>
+        <p class="keywords">authenticate, error</p>
+        <div class="context ctx8"></div>
+        <style>
+            .ctx8 {
+                width: 492px;
+                height: 50px;
+                top: 357px;
+                left: 213px;
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+            <pre><code><span class="hl-keyword">class</span> Database:</code>
+<code>    <span class="hl-keyword">def</span> <span class="hl-def">connect</span>(<span class="hl-reserved">self</span>, user, password, host, port):</code>
+<code>        <span class="hl-reserved">self</span>._tcp_socket_connect(host, port)</code>
+<code>        <span class="hl-keyword">try</span>:</code>
+<code>            <span class="hl-reserved">self</span>._authenticate(user, password)</code>
+<code>        <span class="hl-keyword">except</span> AuthenticationError <span class="hl-keyword">as</span> e:</code>
+<code>            <span class="hl-reserved">self</span>.socket.close()</code>
+<code>            <span class="hl-keyword">raise</span> e <span class="hl-keyword">from None</span></code>
+        </pre>
+        <p class="keywords">socket, close</p>
+        <div class="context ctx9"></div>
+        <style>
+            .ctx9 {
+                width: 302px;
+                height: 50px;
+                top: 407px;
+                left: 272px;
+            }
+        </style>
+    </section>
+<section class="slide vista" id="all2all1">
+        <style>
+            #all2all1 {
+                background-image: url("pictures/all2all_1_black.svg");
+            }
+            @media not print {
+                #all2all1 {
+                    background-image: url("pictures/all2all_1_white.svg");
+                }
+            }
+        </style>
+    </section>
+
+    <section class="slide vista" id="all2all2">
+        <style>
+            #all2all2 {
+                background-image: url("pictures/all2all_2_black.svg");
+            }
+            @media not print {
+                #all2all2 {
+                    background-image: url("pictures/all2all_2_white.svg");
+                }
+            }
+        </style>
+    </section>
+
+    <section class="slide vista" id="all2all3">
+        <style>
+            #all2all3 {
+                background-image: url("pictures/all2all_3_black.svg");
+            }
+            @media not print {
+                #all2all3 {
+                    background-image: url("pictures/all2all_3_white.svg");
+                }
+            }
+        </style>
+    </section>
+
+    <section class="slide vista" id="all2all4">
+        <style>
+            #all2all4 {
+                background-image: url("pictures/all2all_4_black.svg");
+            }
+            @media not print {
+                #all2all4 {
+                    background-image: url("pictures/all2all_4_white.svg");
+                }
+            }
+        </style>
+    </section>
+
+    <section class="slide vista" id="all2all5">
+        <style>
+            #all2all5 {
+                background-image: url("pictures/all2all_5_black.svg");
+            }
+            @media not print {
+                #all2all5 {
+                    background-image: url("pictures/all2all_5_white.svg");
+                }
+            }
+        </style>
+    </section>
+
+    <section class="slide vista" id="all2all6">
+        <style>
+            #all2all6 {
+                background-image: url("pictures/all2all_6_black.svg");
+            }
+            @media not print {
+                #all2all6 {
+                    background-image: url("pictures/all2all_6_white.svg");
+                }
+            }
+        </style>
+    </section>
+
+    <section class="slide vista" id="all2all7">
+        <style>
+            #all2all7 {
+                background-image: url("pictures/all2all_7_black.svg");
+            }
+            @media not print {
+                #all2all7 {
+                    background-image: url("pictures/all2all_7_white.svg");
+                }
+            }
+        </style>
+    </section>
+
+    <section class="slide vista" id="all2all8">
+        <style>
+            #all2all8 {
+                background-image: url("pictures/all2all_8_black.svg");
+            }
+            @media not print {
+                #all2all8 {
+                    background-image: url("pictures/all2all_8_white.svg");
+                }
+            }
+        </style>
+    </section>
+
+    <section class="slide vista" id="all2all9">
+        <style>
+            #all2all9 {
+                background-image: url("pictures/all2all_9_black.svg");
+            }
+            @media not print {
+                #all2all9 {
+                    background-image: url("pictures/all2all_9_white.svg");
+                }
+            }
+        </style>
+    </section>
+
+    <section class="slide vista" id="all2all">
+        <style>
+            #all2all {
+                background-image: url("pictures/all2all_black.svg");
+            }
+            @media not print {
+                #all2all {
+                    background-image: url("pictures/all2all_white.svg");
+                }
+            }
+        </style>
+    </section>
+
+
+    <section class="slide">
+        <h2>Id2Vec</h2>
+        Строим векторное представление для идентификаторов в коде. <br>
+        Как построить матрицу слово-контекст \(A_{ij}\)? <br><br>
+
+        \(A_{ij} =\) количество раз когда \(i\) и \(j\) встретились вместе <i class="important fa fa-heart" aria-hidden="true"></i></li>
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2>Id2Vec</h2>
+        Строим векторное представление для идентификаторов в коде. <br>
+        Как построить матрицу слово-контекст \(A_{ij}\)? <br><br>
+
+        \(A_{ij} =\) количество раз когда \(i\) и \(j\) встретились вместе <i class="important fa fa-heart" aria-hidden="true"></i></li>
+        <br><br>
+        $$
+{V_i}^\top V_j \approx PMI_{ij} = \log\dfrac{A_{ij} \sum A_{ij}}{\sum_{k = 1}^N A_{ik}\sum_{k = 1}^N A_{jk}}
+$$
+    </section>
+
+    <section class="slide part" id="cover_random">
+        <div>
+            <h2 class="shout" >Результаты</h2>
+        </div>
+        <style>
+            #cover_random {
+                background: url("pictures/random_graph_white.png") black;
+                background-size: cover;
+            }
+            #cover_random div:before {
+                content: "";
+                position: absolute;
+                z-index: -1;
+                left: 0;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                background: rgba(0, 0, 0, 0.6);
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2>Ближайшие имена к “foo”</h2>
+        <ul class="two-cols">
+            <li>afoo</li>
+            <li>qux</li>
+            <li>myfoo</li>
+            <li>baz</li>
+            <li>mfoo</li>
+            <li>wibble</li>
+            <li>dofoo</li>
+            <li>quux</li>
+            <li>dfoo</li>
+            <li>testing</li>
+            <li>ifoo</li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2>Логический вывод</h2>
+        <p>\(V(\mathrm{bug})\) <span class="important">\(-\)</span> \(V(\mathrm{test})\) <span class="important">\(+\)</span> \(V(\mathrm{expect})\) <span class="important">\(\approx\)</span> \(V(\mathrm{suppress})\)</p>
+        <p>\(V(\mathrm{database})\) <span class="important">\(-\)</span> \(V(\mathrm{query})\) <span class="important">\(+\)</span> \(V(\mathrm{tune})\) <span class="important">\(\approx\)</span> \(V(\mathrm{settings})\)</p>
+        <p>\(V(\mathrm{send})\) <span class="important">\(-\)</span> \(V(\mathrm{receive})\) <span class="important">\(+\)</span> \(V(\mathrm{pop})\) <span class="important">\(\approx\)</span> \(V(\mathrm{push})\)</p>
+        <div id="analogies" class="vista"></div>
+        <style>
+            #analogies {
+                position: absolute;
+                bottom: 0px;
+                right: 50px;
+                width: 550px;
+                height: 330px;
+                background-image: url("pictures/analogy_black.png");
+            }
+            @media not print {
+                #analogies {
+                    background-image: url("pictures/analogy_white.png");
+                }
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2>Очепятки</h2>
+        <ul>
+            <li>\(V(\mathrm{recieve})\) <span class="compare">\(=\)</span> \(V(\mathrm{receive})\)</li>
+            <li>\(V(\mathrm{grey})\) <span class="compare">\(=\)</span> \(V(\mathrm{gray})\)</li>
+            <li>\(V(\mathrm{calback})\) <span class="compare">\(=\)</span> \(V(\mathrm{callbak})\) <span class="compare">=</span> \(V(\mathrm{callback})\)</li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2>Id2vec</h2>
+        Реализация доступна на <a href="https://github.com/src-d/ml">Github</a>.<br><br>
+        <pre>
+            <code>$ python3 -m sourced.ml repo2coocc ... </code>  
+            <code>$ python3 -m sourced.ml id2vec-preproc ... </code>
+            <code>$ python3 -m sourced.ml id2vec-train ... </code>
+        </pre>
+
+    </section>
+
+    <section class="slide">
+        <h2>Разбиение кода на сниппеты</h2>
+        <span class="important">TBD</span>
+
+    </section>
+
+	<section class="slide">
+        <h2>Конец</h2>
+        <ul class="no-bullets fa-bullets">
+            <li><i class="fa fa-envelope monofa" aria-hidden="true"></i><a href="mailto://konstantin@sourced.tech">konstantin@sourced.tech</a></li>
+            <li><i class="fa fa-twitter monofa" aria-hidden="true"></i><a href="https://twitter.com/kslavnov">kslavnov</a></li>
+            <li><i class="fa fa-github monofa" aria-hidden="true"></i><a href="https://github.com/zurk">zurk</a></li>
+            <li><i class="fa fa-rss monofa" aria-hidden="true"></i><a href="https://blog.sourced.tech">blog.sourced.tech</a></li>
+            <li><i class="fa fa-trophy monofa" aria-hidden="true"></i><a href="https://github.com/src-d/awesome-machine-learning-on-source-code">Awesome #MLonCode</a></li>
+        </ul>
+        <div class="vista" id="qrcode"></div>
+        <style>
+            #qrcode {
+                width: 350px;
+                height: 350px;
+                position: absolute;
+                left: 550px;
+                top: 150px;
+            }
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2>Матричная факторизация</h2>
+        <img src="pictures/explicit_mat_fact_white.png" id="matrix_factorization">
+        <style>
+            #matrix_factorization {
+                height: 300px;
+                object-fit: contain;
+            }
+        </style>
+    </section>
+
+	<div class="progress"></div>
+
+	<script src="shower/shower.min.js"></script>
+    <script async src="https://use.fontawesome.com/72adc0539b.js"></script>
+    <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS_CHTML"></script>
+	<script>
+    function fullscreen() {
+        if (!document.fullscreenElement && !document.mozFullScreenElement &&
+			!document.webkitFullscreenElement) {
+            var body = document.getElementsByTagName("html")[0];
+            if (body.requestFullscreen) {
+                body.requestFullscreen();
+            } else if (body.mozRequestFullScreen) {
+                body.mozRequestFullScreen();
+            } else if (body.webkitRequestFullScreen) {
+                body.webkitRequestFullScreen();
+            }
+            document.getElementById("fullscreen").title = "Return";
+        } else {
+            if (document.cancelFullScreen) {
+                document.cancelFullScreen();
+            } else if (document.mozCancelFullScreen) {
+                document.mozCancelFullScreen();
+            } else if (document.webkitCancelFullScreen) {
+                document.webkitCancelFullScreen();
+            }
+            document.getElementById("fullscreen").title = "Go fullscreen";
+        }
+    }
+    </script>
+</body>
+</html>
