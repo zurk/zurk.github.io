@@ -19,6 +19,13 @@
     <meta property="twitter:image" content="http://zurk.github.io/moscow-python-06-2018/pictures/cover.jpg" />
     <link rel="stylesheet" href="shower/themes/ribbon/styles/screen-16x10.css">
 </head>
+<style>
+        #scroll_code pre code::before {
+            position: relative;
+            margin-left: 0;
+            margin-right: 10px;
+        }
+</style>
 <body class="shower list">
 
 	<header class="caption">
@@ -41,14 +48,13 @@
             margin-left: -1px !important;
             margin-top: -1px !important;
         }
-        @media not print {
-            .slide {
-                color: white;
-                background: black;
-            }
-            .slide h2 {
-                color: #bababa;
-            }
+        
+        .slide {
+            color: white;
+            background: black;
+        }
+        .slide h2 {
+            color: #bababa;
         }
         #fullscreen {
             float: right;
@@ -364,11 +370,11 @@ $$
 \end{bmatrix}
 \quad \Longrightarrow \quad
 \begin{bmatrix}
-    1 & 0 & 0 & 2 & 0.5  \\
-    0 & 1 & 0 & 1 & 0.75 \\
-    0 & 1 & 0 & 3 & 0.9  \\
-    \vdots & \vdots & \vdots & \vdots & \vdots \\
-    0 & 0 & 1 & 5 & 0.2 \\
+    250 & 2 & 0.5  \\
+    150 & 1 & 0.75 \\
+    150 & 3 & 0.9  \\
+    \vdots & \vdots & \vdots \\
+    100 & 5 & 0.2 \\
 \end{bmatrix}
 \;
 \begin{bmatrix}
@@ -389,7 +395,7 @@ $$
             <li><span class="monofa">❌</span> Не конструктивно</li>
         </ul>
 
-        Если у признака есть структура – ее можно ипользовать.
+        Если у признака есть структура — ее можно использовать.
     </section>
 
     <section class="slide" id="tf-ids">
@@ -493,12 +499,7 @@ $$
                 position: absolute;
                 left: 100px;
                 top: 106px;
-                background-color: rgba(255, 255, 255, 0.5);
-            }
-            @media not print {
-                #tf-ids h2 {
-                    background-color: rgba(0, 0, 0, 0.5);
-                }
+                background-color: rgba(0, 0, 0, 0.5);
             }
             #tf-ids {
                 padding: 10px 0px 15px 0px;
@@ -574,12 +575,12 @@ $$
     </section>
 
     <section class="slide">
-        <h2>Контекст - слово</h2>
+        <h2>Контекст — слово</h2>
         <div id="emb_explicit_example">
             <div>
                 Пример:<br>
-                "Слова - это всего лишь слова"<br>
-                Ширина контекста - 1.
+                "Слова — это всего лишь слова."<br>
+                Ширина контекста — 1.
             </div>
             <div class="vista">
                 <img src="pictures/coocc_example1.svg" id="emb_explicit_example_pic">
@@ -600,11 +601,11 @@ $$
     </section>
 
     <section class="slide">
-        <h2>Контекст - слово</h2>
+        <h2>Контекст — слово</h2>
         <div id="emb_explicit_example">
             <div>
                 Пример:<br>
-                "<span class="hl-number"><b>Слова</b> - это</span> всего лишь слова."<br>
+                "<span class="hl-number"><b>Слова</b> — это</span> всего лишь слова."<br>
             </div>
             <div class="vista">
                 <img src="pictures/coocc_example2.svg" id="emb_explicit_example_pic">
@@ -613,11 +614,11 @@ $$
         </style>
     </section>
     <section class="slide">
-        <h2>Контекст - слово</h2>
+        <h2>Контекст — слово</h2>
         <div id="emb_explicit_example">
             <div>
                 Пример:<br>
-                "<span class="hl-number">Слова -<b> это</b> всего</span> лишь слова."<br>
+                "<span class="hl-number">Слова — <b>это</b> всего</span> лишь слова."<br>
             </div>
             <div class="vista">
                 <img src="pictures/coocc_example3.svg" id="emb_explicit_example_pic">
@@ -626,11 +627,11 @@ $$
         </style>
     </section>
     <section class="slide">
-        <h2>Контекст - слово</h2>
+        <h2>Контекст — слово</h2>
         <div id="emb_explicit_example">
             <div>
                 Пример:<br>
-                "Слова - <span class="hl-number">это <b>всего</b> лишь</span> слова."<br>
+                "Слова — <span class="hl-number">это <b>всего</b> лишь</span> слова."<br>
             </div>
             <div class="vista">
                 <img src="pictures/coocc_example4.svg" id="emb_explicit_example_pic">
@@ -639,11 +640,11 @@ $$
         </style>
     </section>
     <section class="slide">
-        <h2>Контекст - слово</h2>
+        <h2>Контекст — слово</h2>
         <div id="emb_explicit_example">
             <div>
                 Пример:<br>
-                "Слова  - это <span class="hl-number">всего <b>лишь</b> слова</span>."<br>
+                "Слова — это <span class="hl-number">всего <b>лишь</b> слова</span>."<br>
             </div>
             <div class="vista">
                 <img src="pictures/coocc_example5.svg" id="emb_explicit_example_pic">
@@ -652,11 +653,11 @@ $$
         </style>
     </section>
     <section class="slide">
-        <h2>Контекст - слово</h2>
+        <h2>Контекст — слово</h2>
         <div id="emb_explicit_example">
             <div>
                 Пример:<br>
-                "Слова  - это всего <span class="hl-number">лишь <b>слова</b></span>."<br>
+                "Слова — это всего <span class="hl-number">лишь <b>слова</b></span>."<br>
             </div>
             <div class="vista">
                 <img src="pictures/coocc_example6.svg" id="emb_explicit_example_pic">
@@ -669,7 +670,7 @@ $$
         <div id="emb_explicit_example">
             <div>
                 Пример:<br>
-                "Слова  - это всего лишь слова."<br><br>
+                "Слова — это всего лишь слова."<br><br>
                 \(\qquad{V_i}^\top V_j = \mathrm{PMI}(A)_{ij}\)
             </div>
             <div class="vista">
@@ -734,10 +735,10 @@ $$
     </section>
 
     <section class="slide">
-        <h2>Векторное представление. Итог.</h2>
+        <h2>Итого</h2>
         <ul>
             <li>Снижает размерность данных.</li>
-            <li>Похожий контекст - похожие вектора.</li>
+            <li>Похожий контекст — похожие вектора.</li>
             <li>Логический вывод: \(V(девушка) − V(парень) ≃ V(королева) − V(король)\).</li>
         </ul>
     </section>
@@ -755,11 +756,11 @@ $$
     </section>
 
     <section class="slide">
-        <h2>Примеры моделей.</h2>
+        <h2>Примеры моделей</h2>
         <ul>
-            <li>Word2vec - <a href="https://arxiv.org/pdf/1310.4546.pdf">Статья на ArXiV</a>, <a href="https://github.com/facebookresearch/fastText">fastText</a>.</li>
-            <li>GloVe - <a href="https://nlp.stanford.edu/pubs/glove.pdf">Статья</a>, <a href="https://nlp.stanford.edu/projects/glove/">реализация</a>.    </li>
-            <li>Swivel - <a href="https://arxiv.org/pdf/1602.02215.pdf">Статья на ArXiV</a>, <a href="https://github.com/tensorflow/models/tree/master/research/swivel">реализация на tensorflow</a>, <a href="https://github.com/src-d/ml/blob/master/sourced/ml/algorithms/swivel.py">наш форк</a>. </li>
+            <li>Word2vec — <a href="https://arxiv.org/pdf/1310.4546.pdf">Статья на ArXiV</a>, <a href="https://github.com/facebookresearch/fastText">fastText</a>.</li>
+            <li>GloVe — <a href="https://nlp.stanford.edu/pubs/glove.pdf">Статья</a>, <a href="https://nlp.stanford.edu/projects/glove/">реализация</a>.    </li>
+            <li>Swivel — <a href="https://arxiv.org/pdf/1602.02215.pdf">Статья на ArXiV</a>, <a href="https://github.com/tensorflow/models/tree/master/research/swivel">реализация на tensorflow</a>, <a href="https://github.com/src-d/ml/blob/master/sourced/ml/algorithms/swivel.py">наш форк</a>. </li>
         </ul>
     </section>
 
@@ -767,10 +768,9 @@ $$
         <h2>Swivel</h2>
         <ul class="no-bullets fa-bullets">
             <li><span class="monofa">✅</span>Работает с матрицей слово-контекст</li>
-            <li><span class="monofa">✅</span>Обсчитывается на GPU (нескольких)</li>
             <li><span class="monofa">✅</span>Масштабируется с размером словаря</li>
-            <li><span class="monofa">✅</span>Шардинг</li>
-        </ul>       
+            <li><span class="monofa">✅</span>Горизонтально масштабируется (GPUs & nodes)</li>
+        </ul>
     </section>
 
     <section class="slide">
@@ -1048,12 +1048,7 @@ $$
 <section class="slide vista" id="all2all1">
         <style>
             #all2all1 {
-                background-image: url("pictures/all2all_1_black.svg");
-            }
-            @media not print {
-                #all2all1 {
-                    background-image: url("pictures/all2all_1_white.svg");
-                }
+                background-image: url("pictures/all2all_1_white.svg");
             }
         </style>
     </section>
@@ -1061,12 +1056,7 @@ $$
     <section class="slide vista" id="all2all2">
         <style>
             #all2all2 {
-                background-image: url("pictures/all2all_2_black.svg");
-            }
-            @media not print {
-                #all2all2 {
-                    background-image: url("pictures/all2all_2_white.svg");
-                }
+                background-image: url("pictures/all2all_2_white.svg");
             }
         </style>
     </section>
@@ -1074,12 +1064,7 @@ $$
     <section class="slide vista" id="all2all3">
         <style>
             #all2all3 {
-                background-image: url("pictures/all2all_3_black.svg");
-            }
-            @media not print {
-                #all2all3 {
-                    background-image: url("pictures/all2all_3_white.svg");
-                }
+                background-image: url("pictures/all2all_3_white.svg");
             }
         </style>
     </section>
@@ -1087,12 +1072,7 @@ $$
     <section class="slide vista" id="all2all4">
         <style>
             #all2all4 {
-                background-image: url("pictures/all2all_4_black.svg");
-            }
-            @media not print {
-                #all2all4 {
-                    background-image: url("pictures/all2all_4_white.svg");
-                }
+                background-image: url("pictures/all2all_4_white.svg");
             }
         </style>
     </section>
@@ -1100,12 +1080,7 @@ $$
     <section class="slide vista" id="all2all5">
         <style>
             #all2all5 {
-                background-image: url("pictures/all2all_5_black.svg");
-            }
-            @media not print {
-                #all2all5 {
-                    background-image: url("pictures/all2all_5_white.svg");
-                }
+                background-image: url("pictures/all2all_5_white.svg");
             }
         </style>
     </section>
@@ -1113,12 +1088,7 @@ $$
     <section class="slide vista" id="all2all6">
         <style>
             #all2all6 {
-                background-image: url("pictures/all2all_6_black.svg");
-            }
-            @media not print {
-                #all2all6 {
-                    background-image: url("pictures/all2all_6_white.svg");
-                }
+                background-image: url("pictures/all2all_6_white.svg");
             }
         </style>
     </section>
@@ -1126,12 +1096,7 @@ $$
     <section class="slide vista" id="all2all7">
         <style>
             #all2all7 {
-                background-image: url("pictures/all2all_7_black.svg");
-            }
-            @media not print {
-                #all2all7 {
-                    background-image: url("pictures/all2all_7_white.svg");
-                }
+                background-image: url("pictures/all2all_7_white.svg");
             }
         </style>
     </section>
@@ -1139,12 +1104,7 @@ $$
     <section class="slide vista" id="all2all8">
         <style>
             #all2all8 {
-                background-image: url("pictures/all2all_8_black.svg");
-            }
-            @media not print {
-                #all2all8 {
-                    background-image: url("pictures/all2all_8_white.svg");
-                }
+                background-image: url("pictures/all2all_8_white.svg");
             }
         </style>
     </section>
@@ -1152,12 +1112,7 @@ $$
     <section class="slide vista" id="all2all9">
         <style>
             #all2all9 {
-                background-image: url("pictures/all2all_9_black.svg");
-            }
-            @media not print {
-                #all2all9 {
-                    background-image: url("pictures/all2all_9_white.svg");
-                }
+                background-image: url("pictures/all2all_9_white.svg");
             }
         </style>
     </section>
@@ -1165,16 +1120,10 @@ $$
     <section class="slide vista" id="all2all">
         <style>
             #all2all {
-                background-image: url("pictures/all2all_black.svg");
-            }
-            @media not print {
-                #all2all {
-                    background-image: url("pictures/all2all_white.svg");
-                }
+                background-image: url("pictures/all2all_white.svg");
             }
         </style>
     </section>
-
 
     <section class="slide">
         <h2>Id2Vec</h2>
@@ -1249,12 +1198,7 @@ $$
                 right: 50px;
                 width: 550px;
                 height: 330px;
-                background-image: url("pictures/analogy_black.png");
-            }
-            @media not print {
-                #analogies {
-                    background-image: url("pictures/analogy_white.png");
-                }
+                background-image: url("pictures/analogy_white.png");
             }
         </style>
     </section>
@@ -1262,9 +1206,9 @@ $$
     <section class="slide">
         <h2>Очепятки</h2>
         <ul>
-            <li>\(V(\mathrm{recieve})\) <span class="compare">\(=\)</span> \(V(\mathrm{receive})\)</li>
-            <li>\(V(\mathrm{grey})\) <span class="compare">\(=\)</span> \(V(\mathrm{gray})\)</li>
-            <li>\(V(\mathrm{calback})\) <span class="compare">\(=\)</span> \(V(\mathrm{callbak})\) <span class="compare">=</span> \(V(\mathrm{callback})\)</li>
+            <li>\(V(\mathrm{recieve})\) <span class="compare">\(\approx\)</span> \(V(\mathrm{receive})\)</li>
+            <li>\(V(\mathrm{grey})\) <span class="compare">\(\approx\)</span> \(V(\mathrm{gray})\)</li>
+            <li>\(V(\mathrm{calback})\) <span class="compare">\(\approx\)</span> \(V(\mathrm{callbak})\) <span class="compare">\(\approx\)</span> \(V(\mathrm{callback})\)</li>
         </ul>
     </section>
 
@@ -1281,18 +1225,568 @@ $$
 
     <section class="slide">
         <h2>Разбиение кода на сниппеты</h2>
-        <span class="important">TBD</span>
-
     </section>
 
-	<section class="slide">
-        <h2>Конец</h2>
-        <ul class="no-bullets fa-bullets">
-            <li><i class="fa fa-envelope monofa" aria-hidden="true"></i><a href="mailto://konstantin@sourced.tech">konstantin@sourced.tech</a></li>
-            <li><i class="fa fa-twitter monofa" aria-hidden="true"></i><a href="https://twitter.com/kslavnov">kslavnov</a></li>
-            <li><i class="fa fa-github monofa" aria-hidden="true"></i><a href="https://github.com/zurk">zurk</a></li>
-            <li><i class="fa fa-rss monofa" aria-hidden="true"></i><a href="https://blog.sourced.tech">blog.sourced.tech</a></li>
-            <li><i class="fa fa-trophy monofa" aria-hidden="true"></i><a href="https://github.com/src-d/awesome-machine-learning-on-source-code">Awesome #MLonCode</a></li>
+    <section class="slide">
+        <h2>Разбиение кода на сниппеты</h2>
+        <div id="code_graph_example_pic">
+        
+        </div>
+        <div id="code_graph_example">
+            <pre class="vista" style="font-size: 90%">
+                <code><span class="hl-keyword">import</span> numpy <span class="hl-keyword">as</span> np</code>
+                <code>seed = <span class="hl-number">42</span></code>
+                <code>np.random.seed(seed)</code>
+                <code><span class="hl-def">print</span>(np.random.randint(<span class="hl-number">10</span>))</code>
+                <code><span class="hl-keyword">from</span> sklearn.cluster <span class="hl-keyword">import</span> KMeans</code>
+                <code>X = np.array([[<span class="hl-number">1</span>, <span class="hl-number">2</span>], [<span class="hl-number">1</span>, <span class="hl-number">4</span>]])</code>
+                <code>kmeans = KMeans(<span class="hl-number">2</span>).fit(X)</code>
+                <code><span class="hl-def">print</span>(kmeans.labels_)</code>
+            </pre>
+        </div>
+        <style>
+            #code_graph_example {
+                align-items: top;
+                position: absolute;
+                right: 250px;
+            }
+            #code_graph_example_pic {
+                position: absolute;
+                align-items: top;
+                display: flex;
+                top: 153px;
+                left: 0px;
+                width: 400px;
+                height: 428px;
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2>Разбиение кода на сниппеты</h2>
+        <div>
+            <img src="pictures/code_graph1.svg" id="code_graph_example_pic">
+        </div>
+        <div id="code_graph_example">
+            <pre class="vista" style="font-size: 90%">
+                <code><span class="hl-keyword">import</span> numpy <span class="hl-keyword">as</span> np</code>
+                <code>seed = <span class="hl-number">42</span></code>
+                <code>np.random.seed(seed)</code>
+                <code><span class="hl-def">print</span>(np.random.randint(<span class="hl-number">10</span>))</code>
+                <code><span class="hl-keyword">from</span> sklearn.cluster <span class="hl-keyword">import</span> KMeans</code>
+                <code>X = np.array([[<span class="hl-number">1</span>, <span class="hl-number">2</span>], [<span class="hl-number">1</span>, <span class="hl-number">4</span>]])</code>
+                <code>kmeans = KMeans(<span class="hl-number">2</span>).fit(X)</code>
+                <code><span class="hl-def">print</span>(kmeans.labels_)</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Разбиение кода на сниппеты</h2>
+        <div>
+            <img src="pictures/code_graph2.svg" id="code_graph_example_pic">
+        </div>
+        <div id="code_graph_example">
+            <pre class="vista" style="font-size: 90%">
+                <code><span class="hl-keyword">import</span> numpy <span class="hl-keyword">as</span> <span class="important">np</span></code>
+                <code>seed = <span class="hl-number">42</span></code>
+                <code><span class="important">np</span>.random.seed(seed)</code>
+                <code><span class="hl-def">print</span>(<span class="important">np</span>.random.randint(<span class="hl-number">10</span>))</code>
+                <code><span class="hl-keyword">from</span> sklearn.cluster <span class="hl-keyword">import</span> KMeans</code>
+                <code>X = <span class="important">np</span>.array([[<span class="hl-number">1</span>, <span class="hl-number">2</span>], [<span class="hl-number">1</span>, <span class="hl-number">4</span>]])</code>
+                <code>kmeans = KMeans(<span class="hl-number">2</span>).fit(X)</code>
+                <code><span class="hl-def">print</span>(kmeans.labels_)</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Разбиение кода на сниппеты</h2>
+        <div>
+            <img src="pictures/code_graph3.svg" id="code_graph_example_pic">
+        </div>
+        <div id="code_graph_example">
+            <pre class="vista" style="font-size: 90%">
+                <code><span class="hl-keyword">import</span> numpy <span class="hl-keyword">as</span> np</code>
+                <code><span class="important">seed</span> = <span class="hl-number">42</span></code>
+                <code>np.random.<span class="important">seed</span>(<span class="important">seed</span>)</code>
+                <code><span class="hl-def">print</span>(np.random.randint(<span class="hl-number">10</span>))</code>
+                <code><span class="hl-keyword">from</span> sklearn.cluster <span class="hl-keyword">import</span> KMeans</code>
+                <code>X = np.array([[<span class="hl-number">1</span>, <span class="hl-number">2</span>], [<span class="hl-number">1</span>, <span class="hl-number">4</span>]])</code>
+                <code>kmeans = KMeans(<span class="hl-number">2</span>).fit(X)</code>
+                <code><span class="hl-def">print</span>(kmeans.labels_)</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Разбиение кода на сниппеты</h2>
+        <div>
+            <img src="pictures/code_graph4.svg" id="code_graph_example_pic">
+        </div>
+        <div id="code_graph_example">
+            <pre class="vista" style="font-size: 90%">
+                <code><span class="hl-keyword">import</span> numpy <span class="hl-keyword">as</span> np</code>
+                <code>seed = <span class="hl-number">42</span></code>
+                <code>np.random.seed(seed)</code>
+                <code><span class="hl-def">print</span>(np.random.randint(<span class="hl-number">10</span>))</code>
+                <code><span class="hl-keyword">from</span> sklearn.cluster <span class="hl-keyword">import</span> <span class="important">KMeans</span></code>
+                <code>X = np.array([[<span class="hl-number">1</span>, <span class="hl-number">2</span>], [<span class="hl-number">1</span>, <span class="hl-number">4</span>]])</code>
+                <code>kmeans = <span class="important">KMeans</span>(<span class="hl-number">2</span>).fit(X)</code>
+                <code><span class="hl-def">print</span>(kmeans.labels_)</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Разбиение кода на сниппеты</h2>
+        <div>
+            <img src="pictures/code_graph5.svg" id="code_graph_example_pic">
+        </div>
+        <div id="code_graph_example">
+            <pre class="vista" style="font-size: 90%">
+                <code><span class="hl-keyword">import</span> numpy <span class="hl-keyword">as</span> np</code>
+                <code>seed = <span class="hl-number">42</span></code>
+                <code>np.random.seed(seed)</code>
+                <code><span class="hl-def">print</span>(np.random.randint(<span class="hl-number">10</span>))</code>
+                <code><span class="hl-keyword">from</span> sklearn.cluster <span class="hl-keyword">import</span> KMeans</code>
+                <code><span class="important">X</span> = np.array([[<span class="hl-number">1</span>, <span class="hl-number">2</span>], [<span class="hl-number">1</span>, <span class="hl-number">4</span>]])</code>
+                <code>kmeans = KMeans(<span class="hl-number">2</span>).fit(<span class="important">X</span>)</code>
+                <code><span class="hl-def">print</span>(kmeans.labels_)</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Разбиение кода на сниппеты</h2>
+        <div>
+            <img src="pictures/code_graph6.svg" id="code_graph_example_pic">
+        </div>
+        <div id="code_graph_example">
+            <pre class="vista" style="font-size: 90%">
+                <code><span class="hl-keyword">import</span> numpy <span class="hl-keyword">as</span> np</code>
+                <code>seed = <span class="hl-number">42</span></code>
+                <code>np.random.seed(seed)</code>
+                <code><span class="hl-def">print</span>(np.random.randint(<span class="hl-number">10</span>))</code>
+                <code><span class="hl-keyword">from</span> sklearn.cluster <span class="hl-keyword">import</span> KMeans</code>
+                <code>X = np.array([[<span class="hl-number">1</span>, <span class="hl-number">2</span>], [<span class="hl-number">1</span>, <span class="hl-number">4</span>]])</code>
+                <code><span class="important">kmeans</span> = KMeans(<span class="hl-number">2</span>).fit(X)</code>
+                <code><span class="hl-def">print</span>(<span class="important">kmeans</span>.labels_)</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Пример</h2>
+        <a href="https://github.com/jakevdp/PythonDataScienceHandbook/blob/master/notebooks/05.06-Linear-Regression.ipynb">
+            Python Data Science Handbook - Linear Regression.
+        </a>
+    </section>
+
+    <section class="slide vista">
+        <div id="scroll_code">
+            <pre class="vista" style="font-size: 60%">
+            <br>
+            <code>import matplotlib.pyplot as plt</code>
+            <code>import seaborn as sns; sns.set()</code>
+            <code>import numpy as np</code>
+            <br>
+            <code>rng = np.random.RandomState(1)</code>
+            <code>x = 10 * rng.rand(50)</code>
+            <code>y = 2 * x - 5 + rng.randn(50)</code>
+            <code>plt.scatter(x, y);</code>
+            <br>
+            <code>from sklearn.linear_model import LinearRegression</code>
+            <code>model = LinearRegression(fit_intercept=True)</code>
+            <br>
+            <code>model.fit(x[:, np.newaxis], y)</code>
+            <br>
+            <code>xfit = np.linspace(0, 10, 1000)</code>
+            <code>yfit = model.predict(xfit[:, np.newaxis])</code>
+            <br>
+            <code>plt.scatter(x, y)</code>
+            <code>plt.plot(xfit, yfit);</code>
+            <br>
+            <code>print("Model slope:    ", model.coef_[0])</code>
+            <code>print("Model intercept:", model.intercept_)</code>
+            <br>
+            <code>rng = np.random.RandomState(1)</code>
+            <code>X = 10 * rng.rand(100, 3)</code>
+            <code>y = 0.5 + np.dot(X, [1.5, -2., 1.])</code>
+            <br>
+            <code>model.fit(X, y)</code>
+            <code>print(model.intercept_)</code>
+            <code>print(model.coef_)</code>
+            <br>
+            <code>from sklearn.preprocessing import PolynomialFeatures</code>
+            <code>x = np.array([2, 3, 4])</code>
+            <code>poly = PolynomialFeatures(3, include_bias=False)</code>
+            <code>poly.fit_transform(x[:, None])</code>
+            <br>
+            <code>from sklearn.pipeline import make_pipeline</code>
+            <code>poly_model = make_pipeline(PolynomialFeatures(7),</code>
+            <code>                           LinearRegression())</code>
+            <br>
+            <code>rng = np.random.RandomState(1)</code>
+            <code>x = 10 * rng.rand(50)</code>
+            <code>y = np.sin(x) + 0.1 * rng.randn(50)</code>
+            <br>
+            <code>poly_model.fit(x[:, np.newaxis], y)</code>
+            <code>yfit = poly_model.predict(xfit[:, np.newaxis])</code>
+            <br>
+            <code>plt.scatter(x, y)</code>
+            <code>plt.plot(xfit, yfit);</code>
+            <br>
+            <code>from sklearn.base import BaseEstimator, TransformerMixin</code>
+            <br>
+            <code>class GaussianFeatures(BaseEstimator, TransformerMixin):</code>
+            <code>    """Uniformly spaced Gaussian features for one-dimensional input"""</code>
+            <br>
+            <code>    def __init__(self, N, width_factor=2.0):</code>
+            <code>        self.N = N</code>
+            <code>        self.width_factor = width_factor</code>
+            <br>
+            <code>    @staticmethod</code>
+            <code>    def _gauss_basis(x, y, width, axis=None):</code>
+            <code>        arg = (x - y) / width</code>
+            <code>        return np.exp(-0.5 * np.sum(arg ** 2, axis))</code>
+            <br>
+            <code>    def fit(self, X, y=None):</code>
+            <br>
+            <code>        self.centers_ = np.linspace(X.min(), X.max(), self.N)</code>
+            <code>        self.width_ = self.width_factor * (self.centers_[1] - self.centers_[0])</code>
+            <code>        return self</code>
+            <br>
+            <code>    def transform(self, X):</code>
+            <code>        return self._gauss_basis(X[:, :, np.newaxis], self.centers_,</code>
+            <code>                                 self.width_, axis=1)</code>
+            <br>
+            <code>gauss_model = make_pipeline(GaussianFeatures(20),</code>
+            <code>                            LinearRegression())</code>
+            <code>gauss_model.fit(x[:, np.newaxis], y)</code>
+            <code>yfit = gauss_model.predict(xfit[:, np.newaxis])</code>
+            <br>
+            <code>plt.scatter(x, y)</code>
+            <code>plt.plot(xfit, yfit)</code>
+            <code>plt.xlim(0, 10);</code>
+            <code>model = make_pipeline(GaussianFeatures(30),</code>
+            <code>                      LinearRegression())</code>
+            <code>model.fit(x[:, np.newaxis], y)</code>
+            <br>
+            <code>plt.scatter(x, y)</code>
+            <code>plt.plot(xfit, model.predict(xfit[:, np.newaxis]))</code>
+            <br>
+            <code>plt.xlim(0, 10)</code>
+            <code>plt.ylim(-1.5, 1.5);</code>
+            <br>
+            <code>def basis_plot(model, title=None):</code>
+            <code>    fig, ax = plt.subplots(2, sharex=True)</code>
+            <code>    model.fit(x[:, np.newaxis], y)</code>
+            <code>    ax[0].scatter(x, y)</code>
+            <code>    ax[0].plot(xfit, model.predict(xfit[:, np.newaxis]))</code>
+            <code>    ax[0].set(xlabel='x', ylabel='y', ylim=(-1.5, 1.5))</code>
+            <br>
+            <code>    if title:</code>
+            <code>        ax[0].set_title(title)</code>
+            <br>
+            <code>    ax[1].plot(model.steps[0][1].centers_,</code>
+            <code>               model.steps[1][1].coef_)</code>
+            <code>    ax[1].set(xlabel='basis location',</code>
+            <code>              ylabel='coefficient',</code>
+            <code>              xlim=(0, 10))</code>
+            <br>
+            <code>model = make_pipeline(GaussianFeatures(30), LinearRegression())</code>
+            <code>basis_plot(model)</code>
+            <br>
+            <code>from sklearn.linear_model import Ridge</code>
+            <code>model = make_pipeline(GaussianFeatures(30), Ridge(alpha=0.1))</code>
+            <code>basis_plot(model, title='Ridge Regression')</code>
+            <br>
+            <code>from sklearn.linear_model import Lasso</code>
+            <code>model = make_pipeline(GaussianFeatures(30), Lasso(alpha=0.001))</code>
+            <code>basis_plot(model, title='Lasso Regression')</code>
+            <br>
+            <code>import pandas as pd</code>
+            <code>counts = pd.read_csv('FremontBridge.csv', index_col='Date', parse_dates=True)</code>
+            <code>weather = pd.read_csv('data/BicycleWeather.csv', index_col='DATE', parse_dates=True)</code>
+            <br>
+            <code>daily = counts.resample('d').sum()</code>
+            <code>daily['Total'] = daily.sum(axis=1)</code>
+            <code>daily = daily[['Total']]</code>
+            <br>
+            <code>days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']</code>
+            <code>for i in range(7):</code>
+            <code>    daily[days[i]] = (daily.index.dayofweek == i).astype(float)</code>
+            <br>
+            <code>from pandas.tseries.holiday import USFederalHolidayCalendar</code>
+            <code>cal = USFederalHolidayCalendar()</code>
+            <code>holidays = cal.holidays('2012', '2016')</code>
+            <code>daily = daily.join(pd.Series(1, index=holidays, name='holiday'))</code>
+            <code>daily['holiday'].fillna(0, inplace=True)</code>
+            <br>
+            <code>def hours_of_daylight(date, axis=23.44, latitude=47.61):</code>
+            <code>    """Compute the hours of daylight for the given date"""</code>
+            <code>    days = (date - pd.datetime(2000, 12, 21)).days</code>
+            <code>    m = (1. - np.tan(np.radians(latitude))</code>
+            <code>         * np.tan(np.radians(axis) * np.cos(days * 2 * np.pi / 365.25)))</code>
+            <code>    return 24. * np.degrees(np.arccos(1 - np.clip(m, 0, 2))) / 180.</code>
+            <br>
+            <code>daily['daylight_hrs'] = list(map(hours_of_daylight, daily.index))</code>
+            <code>daily[['daylight_hrs']].plot()</code>
+            <code>plt.ylim(8, 17)</code>
+            <br>
+            <code>weather['TMIN'] /= 10</code>
+            <code>weather['TMAX'] /= 10</code>
+            <code>weather['Temp (C)'] = 0.5 * (weather['TMIN'] + weather['TMAX'])</code>
+            <br>
+            <code>weather['PRCP'] /= 254</code>
+            <code>weather['dry day'] = (weather['PRCP'] == 0).astype(int)</code>
+            <br>
+            <code>daily = daily.join(weather[['PRCP', 'Temp (C)', 'dry day']])</code>
+            <code>daily['annual'] = (daily.index - daily.index[0]).days / 365.</code>
+            <code>daily.head()</code>
+            <code>daily.dropna(axis=0, how='any', inplace=True)</code>
+            <br>
+            <code>column_names = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun', 'holiday',</code>
+            <code>                'daylight_hrs', 'PRCP', 'dry day', 'Temp (C)', 'annual']</code>
+            <code>X = daily[column_names]</code>
+            <code>y = daily['Total']</code>
+            <br>
+            <code>model = LinearRegression(fit_intercept=False)</code>
+            <code>model.fit(X, y)</code>
+            <code>daily['predicted'] = model.predict(X)</code>
+            <br>
+            <code>daily[['Total', 'predicted']].plot(alpha=0.5);</code>
+            <br>
+            <code>params = pd.Series(model.coef_, index=X.columns)</code>
+            <code>params</code>
+            <br>
+            <code>from sklearn.utils import resample</code>
+            <code>np.random.seed(1)</code>
+            <code>err = np.std([model.fit(*resample(X, y)).coef_</code>
+            <code>              for i in range(1000)], 0)</code>
+            <br>
+            <code>print(pd.DataFrame({'effect': params.round(0),</code>
+            <code>                    'error': err.round(0)}))</code>
+            </pre>
+        </div>
+
+        <style>
+        #scroll_code {
+            overflow-y: scroll;
+            width:100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        #scroll_code pre {
+                height: auto;
+                height: 100%;
+                overflow-y: scroll;
+            }​
+        </style>
+    </section>
+
+    <section class="slide vista">
+        
+        <div id="scroll_code">
+            <div>
+            <pre class="vista" style="font-size: 60%">
+            <br>
+            <code><span style='color: rgb(158,238,202)'>import matplotlib.pyplot as plt</span></code>
+            <code><span style='color: rgb(73,234,190)'>import seaborn as sns; sns.set()</span></code>
+            <code><span style='color: rgb(227,89,156)'>import numpy as np</span></code>
+            <br>
+            <code><span style='color: rgb(220,101,142)'>rng = np.random.RandomState(1)</span></code>
+            <code><span style='color: rgb(197,168,93)'>x = 10 * rng.rand(50)</span></code>
+            <code><span style='color: rgb(207,178,82)'>y = 2 * x - 5 + rng.randn(50)</span></code>
+            <code><span style='color: rgb(198,216,129)'>plt.scatter(x, y);</span></code>
+            <br>
+            <code><span style='color: rgb(3,184,121)'>from sklearn.linear_model import LinearRegression</span></code>
+            <code><span style='color: rgb(61,203,52)'>model = LinearRegression(fit_intercept=True)</span></code>
+            <br>
+            <code><span style='color: rgb(157,152,104)'>model.fit(x[:, np.newaxis], y)</span></code>
+            <br>
+            <code><span style='color: rgb(213,105,194)'>xfit = np.linspace(0, 10, 1000)</span></code>
+            <code><span style='color: rgb(140,140,118)'>yfit = model.predict(xfit[:, np.newaxis])</span></code>
+            <br>
+            <code><span style='color: rgb(197,217,132)'>plt.scatter(x, y)</span></code>
+            <code><span style='color: rgb(174,211,247)'>plt.plot(xfit, yfit);</span></code>
+            <br>
+            <code><span style='color: rgb(75,219,15)'>print("Model slope:    ", model.coef_[0])</span></code>
+            <code><span style='color: rgb(76,219,16)'>print("Model intercept:", model.intercept_)</span></code>
+            <br>
+            <code><span style='color: rgb(224,101,141)'>rng = np.random.RandomState(1)</span></code>
+            <code><span style='color: rgb(160,118,88)'>X = 10 * rng.rand(100, 3)</span></code>
+            <code><span style='color: rgb(185,127,100)'>y = 0.5 + np.dot(X, [1.5, -2., 1.])</span></code>
+            <br>
+            <code><span style='color: rgb(135,160,89)'>model.fit(X, y)</span></code>
+            <code><span style='color: rgb(76,222,13)'>print(model.intercept_)</span></code>
+            <code><span style='color: rgb(79,213,30)'>print(model.coef_)</span></code>
+            <br>
+            <code><span style='color: rgb(59,247,198)'>from sklearn.preprocessing import PolynomialFeatures</span></code>
+            <code><span style='color: rgb(207,136,128)'>x = np.array([2, 3, 4])</span></code>
+            <code><span style='color: rgb(110,222,184)'>poly = PolynomialFeatures(3, include_bias=False)</span></code>
+            <code><span style='color: rgb(187,201,107)'>poly.fit_transform(x[:, None])</span></code>
+            <br>
+            <code><span style='color: rgb(59,224,127)'>from sklearn.pipeline import make_pipeline</span></code>
+            <code><span style='color: rgb(103,187,160)'>poly_model = make_pipeline(PolynomialFeatures(7),</span></code>
+            <code><span style='color: rgb(17,182,110)'>                           LinearRegression())</span></code>
+            <br>
+            <code><span style='color: rgb(222,101,138)'>rng = np.random.RandomState(1)</span></code>
+            <code><span style='color: rgb(197,168,92)'>x = 10 * rng.rand(50)</span></code>
+            <code><span style='color: rgb(215,147,98)'>y = np.sin(x) + 0.1 * rng.randn(50)</span></code>
+            <br>
+            <code><span style='color: rgb(210,150,101)'>poly_model.fit(x[:, np.newaxis], y)</span></code>
+            <code><span style='color: rgb(215,114,197)'>yfit = poly_model.predict(xfit[:, np.newaxis])</span></code>
+            <br>
+            <code><span style='color: rgb(194,212,137)'>plt.scatter(x, y)</span></code>
+            <code><span style='color: rgb(177,215,255)'>plt.plot(xfit, yfit);</span></code>
+            <br>
+            <code><span style='color: rgb(41,185,134)'>from sklearn.base import BaseEstimator, TransformerMixin</span></code>
+            <br>
+            <code><span style='color: rgb(19,236,112)'>class GaussianFeatures(BaseEstimator, TransformerMixin):</span></code>
+            <code>    """Uniformly spaced Gaussian features for one-dimensional input"""</code>
+            <br>
+            <code><span style='color: rgb(153,15,7)'>    def __init__(self, N, width_factor=2.0):</span></code>
+            <code><span style='color: rgb(151,25,29)'>        self.N = N</span></code>
+            <code><span style='color: rgb(151,25,26)'>        self.width_factor = width_factor</span></code>
+            <br>
+            <code><span style='color: rgb(155,72,87)'>    @staticmethod</span></code>
+            <code><span style='color: rgb(202,175,95)'>    def _gauss_basis(x, y, width, axis=None):</span></code>
+            <code><span style='color: rgb(210,190,81)'>        arg = (x - y) / width</span></code>
+            <code><span style='color: rgb(206,87,174)'>        return np.exp(-0.5 * np.sum(arg ** 2, axis))</span></code>
+            <br>
+            <code><span style='color: rgb(177,127,59)'>    def fit(self, X, y=None):</span></code>
+            <br>
+            <code><span style='color: rgb(182,61,55)'>        self.centers_ = np.linspace(X.min(), X.max(), self.N)</span></code>
+            <code><span style='color: rgb(164,11,0)'>        self.width_ = self.width_factor * (self.centers_[1] - self.centers_[0])</span></code>
+            <code><span style='color: rgb(148,32,36)'>        return self</span></code>
+            <br>
+            <code><span style='color: rgb(151,45,27)'>    def transform(self, X):</span></code>
+            <code><span style='color: rgb(195,65,57)'>        return self._gauss_basis(X[:, :, np.newaxis], self.centers_,</span></code>
+            <code><span style='color: rgb(154,24,8)'>                                 self.width_, axis=1)</span></code>
+            <br>
+            <code><span style='color: rgb(98,171,141)'>gauss_model = make_pipeline(GaussianFeatures(20),</span></code>
+            <code><span style='color: rgb(12,183,102)'>                            LinearRegression())</span></code>
+            <code><span style='color: rgb(213,149,100)'>gauss_model.fit(x[:, np.newaxis], y)</span></code>
+            <code><span style='color: rgb(219,113,203)'>yfit = gauss_model.predict(xfit[:, np.newaxis])</span></code>
+            <br>
+            <code><span style='color: rgb(198,217,129)'>plt.scatter(x, y)</span></code>
+            <code><span style='color: rgb(178,213,254)'>plt.plot(xfit, yfit)</span></code>
+            <code><span style='color: rgb(160,244,211)'>plt.xlim(0, 10);</span></code>
+            <code><span style='color: rgb(74,233,40)'>model = make_pipeline(GaussianFeatures(30),</span></code>
+            <code><span style='color: rgb(15,181,106)'>                      LinearRegression())</span></code>
+            <code><span style='color: rgb(157,151,104)'>model.fit(x[:, np.newaxis], y)</span></code>
+            <br>
+            <code><span style='color: rgb(198,217,129)'>plt.scatter(x, y)</span></code>
+            <code><span style='color: rgb(141,148,127)'>plt.plot(xfit, model.predict(xfit[:, np.newaxis]))</span></code>
+            <br>
+            <code><span style='color: rgb(165,251,225)'>plt.xlim(0, 10)</span></code>
+            <code><span style='color: rgb(158,227,197)'>plt.ylim(-1.5, 1.5);</span></code>
+            <br>
+            <code><span style='color: rgb(87,222,55)'>def basis_plot(model, title=None):</span></code>
+            <code><span style='color: rgb(144,255,207)'>    fig, ax = plt.subplots(2, sharex=True)</span></code>
+            <code><span style='color: rgb(158,152,103)'>    model.fit(x[:, np.newaxis], y)</span></code>
+            <code><span style='color: rgb(180,208,112)'>    ax[0].scatter(x, y)</span></code>
+            <code><span style='color: rgb(136,144,126)'>    ax[0].plot(xfit, model.predict(xfit[:, np.newaxis]))</span></code>
+            <code><span style='color: rgb(100,251,186)'>    ax[0].set(xlabel='x', ylabel='y', ylim=(-1.5, 1.5))</span></code>
+            <br>
+            <code><span style='color: rgb(85,215,135)'>    if title:</span></code>
+            <code><span style='color: rgb(101,251,175)'>        ax[0].set_title(title)</span></code>
+            <br>
+            <code><span style='color: rgb(107,151,115)'>    ax[1].plot(model.steps[0][1].centers_,</span></code>
+            <code><span style='color: rgb(84,223,23)'>               model.steps[1][1].coef_)</span></code>
+            <code><span style='color: rgb(102,251,187)'>    ax[1].set(xlabel='basis location',</span></code>
+            <code>              ylabel='coefficient',</code>
+            <code>              xlim=(0, 10))</code>
+            <br>
+            <code><span style='color: rgb(58,217,56)'>model = make_pipeline(GaussianFeatures(30), LinearRegression())</span></code>
+            <code><span style='color: rgb(85,222,33)'>basis_plot(model)</span></code>
+            <br>
+            <code><span style='color: rgb(21,179,129)'>from sklearn.linear_model import Ridge</span></code>
+            <code><span style='color: rgb(70,221,60)'>model = make_pipeline(GaussianFeatures(30), Ridge(alpha=0.1))</span></code>
+            <code><span style='color: rgb(85,225,27)'>basis_plot(model, title='Ridge Regression')</span></code>
+            <br>
+            <code><span style='color: rgb(19,179,125)'>from sklearn.linear_model import Lasso</span></code>
+            <code><span style='color: rgb(69,221,60)'>model = make_pipeline(GaussianFeatures(30), Lasso(alpha=0.001))</span></code>
+            <code><span style='color: rgb(85,227,22)'>basis_plot(model, title='Lasso Regression')</span></code>
+            <br>
+            <code><span style='color: rgb(33,83,67)'>import pandas as pd</span></code>
+            <code><span style='color: rgb(35,78,74)'>counts = pd.read_csv('FremontBridge.csv', index_col='Date', parse_dates=True)</span></code>
+            <code><span style='color: rgb(11,76,46)'>weather = pd.read_csv('data/BicycleWeather.csv', index_col='DATE', parse_dates=True)</span></code>
+            <br>
+            <code><span style='color: rgb(83,61,174)'>daily = counts.resample('d').sum()</span></code>
+            <code><span style='color: rgb(75,51,199)'>daily['Total'] = daily.sum(axis=1)</span></code>
+            <code><span style='color: rgb(47,52,223)'>daily = daily[['Total']]</span></code>
+            <br>
+            <code><span style='color: rgb(132,36,168)'>days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']</span></code>
+            <code><span style='color: rgb(122,37,168)'>for i in range(7):</span></code>
+            <code><span style='color: rgb(83,36,187)'>    daily[days[i]] = (daily.index.dayofweek == i).astype(float)</span></code>
+            <br>
+            <code><span style='color: rgb(9,174,205)'>from pandas.tseries.holiday import USFederalHolidayCalendar</span></code>
+            <code><span style='color: rgb(5,166,210)'>cal = USFederalHolidayCalendar()</span></code>
+            <code><span style='color: rgb(0,133,207)'>holidays = cal.holidays('2012', '2016')</span></code>
+            <code><span style='color: rgb(36,68,187)'>daily = daily.join(pd.Series(1, index=holidays, name='holiday'))</span></code>
+            <code><span style='color: rgb(56,59,208)'>daily['holiday'].fillna(0, inplace=True)</span></code>
+            <br>
+            <code><span style='color: rgb(148,89,156)'>def hours_of_daylight(date, axis=23.44, latitude=47.61):</span></code>
+            <code>    """Compute the hours of daylight for the given date"""</code>
+            <code><span style='color: rgb(98,65,124)'>    days = (date - pd.datetime(2000, 12, 21)).days</span></code>
+            <code><span style='color: rgb(247,83,166)'>    m = (1. - np.tan(np.radians(latitude))</span></code>
+            <code><span style='color: rgb(226,69,191)'>         * np.tan(np.radians(axis) * np.cos(days * 2 * np.pi / 365.25)))</span></code>
+            <code><span style='color: rgb(255,87,157)'>    return 24. * np.degrees(np.arccos(1 - np.clip(m, 0, 2))) / 180.</span></code>
+            <br>
+            <code><span style='color: rgb(60,48,215)'>daily['daylight_hrs'] = list(map(hours_of_daylight, daily.index))</span></code>
+            <code><span style='color: rgb(75,93,229)'>daily[['daylight_hrs']].plot()</span></code>
+            <code><span style='color: rgb(164,250,222)'>plt.ylim(8, 17)</span></code>
+            <br>
+            <code><span style='color: rgb(9,77,39)'>weather['TMIN'] /= 10</span></code>
+            <code><span style='color: rgb(14,78,43)'>weather['TMAX'] /= 10</span></code>
+            <code><span style='color: rgb(0,72,36)'>weather['Temp (C)'] = 0.5 * (weather['TMIN'] + weather['TMAX'])</span></code>
+            <br>
+            <code><span style='color: rgb(8,78,39)'>weather['PRCP'] /= 254</span></code>
+            <code><span style='color: rgb(9,65,43)'>weather['dry day'] = (weather['PRCP'] == 0).astype(int)</span></code>
+            <br>
+            <code><span style='color: rgb(34,55,156)'>daily = daily.join(weather[['PRCP', 'Temp (C)', 'dry day']])</span></code>
+            <code><span style='color: rgb(76,31,220)'>daily['annual'] = (daily.index - daily.index[0]).days / 365.</span></code>
+            <code><span style='color: rgb(54,61,212)'>daily.head()</span></code>
+            <code><span style='color: rgb(54,58,219)'>daily.dropna(axis=0, how='any', inplace=True)</span></code>
+            <br>
+            <code><span style='color: rgb(93,68,124)'>column_names = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun', 'holiday',</span></code>
+            <code>                'daylight_hrs', 'PRCP', 'dry day', 'Temp (C)', 'annual']</code>
+            <code><span style='color: rgb(99,74,125)'>X = daily[column_names]</span></code>
+            <code><span style='color: rgb(116,119,134)'>y = daily['Total']</span></code>
+            <br>
+            <code><span style='color: rgb(62,202,54)'>model = LinearRegression(fit_intercept=False)</span></code>
+            <code><span style='color: rgb(136,161,87)'>model.fit(X, y)</span></code>
+            <code><span style='color: rgb(99,122,122)'>daily['predicted'] = model.predict(X)</span></code>
+            <br>
+            <code><span style='color: rgb(77,95,219)'>daily[['Total', 'predicted']].plot(alpha=0.5);</span></code>
+            <br>
+            <code><span style='color: rgb(91,136,100)'>params = pd.Series(model.coef_, index=X.columns)</span></code>
+            <code><span style='color: rgb(29,130,61)'>params</span></code>
+            <br>
+            <code><span style='color: rgb(107,78,137)'>from sklearn.utils import resample</span></code>
+            <code><span style='color: rgb(221,89,158)'>np.random.seed(1)</span></code>
+            <code><span style='color: rgb(138,137,111)'>err = np.std([model.fit(*resample(X, y)).coef_</span></code>
+            <code><span style='color: rgb(134,0,195)'>              for i in range(1000)], 0)</span></code>
+            <br>
+            <code><span style='color: rgb(36,120,60)'>print(pd.DataFrame({'effect': params.round(0),</span></code>
+            <code><span style='color: rgb(52,127,38)'>                    'error': err.round(0)}))</span></code>
+            </pre>
+        </div>
+        <div id="scroll_code">
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2>TL; DR</h2>
+        <ul>
+            <li>Взять задачу</li>
+            <li>Построить матрицу слово-контекст</li>
+            <li>Запустить Swivel</li>
+            <li>???</li>
+            <li>PROFIT!</li>
         </ul>
         <div class="vista" id="qrcode"></div>
         <style>
@@ -1305,6 +1799,18 @@ $$
             }
             }
         </style>
+    </section>
+
+	<section class="slide">
+        <h2>Конец</h2>
+        <ul class="no-bullets fa-bullets">
+            <li><i class="fa fa-envelope monofa" aria-hidden="true"></i><a href="mailto://konstantin@sourced.tech">konstantin@sourced.tech</a></li>
+            <li><i class="fa fa-twitter monofa" aria-hidden="true"></i><a href="https://twitter.com/kslavnov">kslavnov</a></li>
+            <li><i class="fa fa-github monofa" aria-hidden="true"></i><a href="https://github.com/zurk">zurk</a></li>
+            <li><i class="fa fa-rss monofa" aria-hidden="true"></i><a href="https://blog.sourced.tech">blog.sourced.tech</a></li>
+            <li><i class="fa fa-trophy monofa" aria-hidden="true"></i><a href="https://github.com/src-d/awesome-machine-learning-on-source-code">Awesome #MLonCode</a></li>
+        </ul>
+        Презентация: <br><a href="https://zurk.github.io/moscow-python-06-2018">zurk.github.io/moscow-python-06-2018</a>
     </section>
 
     <section class="slide">
