@@ -24,125 +24,83 @@
 		<title>Page-1</title>
 		<v:pageProperties v:drawingScale="0.0393701" v:pageScale="0.0393701" v:drawingUnits="24" v:shadowOffsetX="8.50394"
 				v:shadowOffsetY="-8.50394"/>
-		<g id="shape11-1" v:mID="11" v:groupContext="shape" transform="translate(39.1136,-4.51319)">
-			<title>Sheet.11</title>
-			<rect x="0" y="156.068" width="37.6342" height="37.6342" class="st1"/>
-		</g>
-		<g id="shape12-3" v:mID="12" v:groupContext="shape" transform="translate(75.1013,-4.51319)">
-			<title>Sheet.12</title>
-			<rect x="0" y="156.068" width="37.6342" height="37.6342" class="st1"/>
-		</g>
-		<g id="shape13-5" v:mID="13" v:groupContext="shape" transform="translate(112.736,-4.51319)">
-			<title>Sheet.13</title>
-			<rect x="0" y="156.068" width="37.6342" height="37.6342" class="st1"/>
-		</g>
-		<g id="shape14-7" v:mID="14" v:groupContext="shape" transform="translate(150.37,-4.51319)">
-			<title>Sheet.14</title>
-			<rect x="0" y="156.068" width="37.6342" height="37.6342" class="st1"/>
-		</g>
-		<g id="shape16-9" v:mID="16" v:groupContext="shape" transform="translate(39.1136,-41.8181)">
+		<g id="shape16-1" v:mID="16" v:groupContext="shape" transform="translate(39.1136,-41.8181)">
 			<title>Sheet.16</title>
 			<rect x="0" y="156.068" width="37.6342" height="37.6342" class="st1"/>
 		</g>
-		<g id="shape17-11" v:mID="17" v:groupContext="shape" transform="translate(75.1013,-41.8181)">
+		<g id="shape17-3" v:mID="17" v:groupContext="shape" transform="translate(75.1013,-41.8181)">
 			<title>Sheet.17</title>
 			<rect x="0" y="156.068" width="37.6342" height="37.6342" class="st1"/>
 		</g>
-		<g id="shape18-13" v:mID="18" v:groupContext="shape" transform="translate(112.736,-41.8181)">
+		<g id="shape18-5" v:mID="18" v:groupContext="shape" transform="translate(112.736,-41.8181)">
 			<title>Sheet.18</title>
 			<rect x="0" y="156.068" width="37.6342" height="37.6342" class="st1"/>
 		</g>
-		<g id="shape19-15" v:mID="19" v:groupContext="shape" transform="translate(150.37,-41.8181)">
-			<title>Sheet.19</title>
-			<rect x="0" y="156.068" width="37.6342" height="37.6342" class="st1"/>
-		</g>
-		<g id="shape21-17" v:mID="21" v:groupContext="shape" transform="translate(39.1136,-79.123)">
+		<g id="shape21-7" v:mID="21" v:groupContext="shape" transform="translate(39.1136,-79.123)">
 			<title>Sheet.21</title>
 			<rect x="0" y="156.068" width="37.6342" height="37.6342" class="st1"/>
 		</g>
-		<g id="shape22-19" v:mID="22" v:groupContext="shape" transform="translate(75.1013,-79.123)">
+		<g id="shape22-9" v:mID="22" v:groupContext="shape" transform="translate(75.1013,-79.123)">
 			<title>Sheet.22</title>
 			<rect x="0" y="156.068" width="37.6342" height="37.6342" class="st1"/>
 		</g>
-		<g id="shape23-21" v:mID="23" v:groupContext="shape" transform="translate(112.736,-79.123)">
+		<g id="shape23-11" v:mID="23" v:groupContext="shape" transform="translate(112.736,-79.123)">
 			<title>Sheet.23</title>
 			<rect x="0" y="156.068" width="37.6342" height="37.6342" class="st1"/>
 		</g>
-		<g id="shape24-23" v:mID="24" v:groupContext="shape" transform="translate(150.37,-79.123)">
-			<title>Sheet.24</title>
-			<rect x="0" y="156.068" width="37.6342" height="37.6342" class="st1"/>
-		</g>
-		<g id="shape26-25" v:mID="26" v:groupContext="shape" transform="translate(39.1136,-116.428)">
+		<g id="shape26-13" v:mID="26" v:groupContext="shape" transform="translate(39.1136,-116.428)">
 			<title>Sheet.26</title>
 			<rect x="0" y="156.068" width="37.6342" height="37.6342" class="st1"/>
 		</g>
-		<g id="shape27-27" v:mID="27" v:groupContext="shape" transform="translate(75.1013,-116.428)">
+		<g id="shape27-15" v:mID="27" v:groupContext="shape" transform="translate(75.1013,-116.428)">
 			<title>Sheet.27</title>
 			<rect x="0" y="156.068" width="37.6342" height="37.6342" class="st1"/>
 		</g>
-		<g id="shape28-29" v:mID="28" v:groupContext="shape" transform="translate(112.736,-116.428)">
+		<g id="shape28-17" v:mID="28" v:groupContext="shape" transform="translate(112.736,-116.428)">
 			<title>Sheet.28</title>
 			<rect x="0" y="156.068" width="37.6342" height="37.6342" class="st1"/>
 		</g>
-		<g id="shape29-31" v:mID="29" v:groupContext="shape" transform="translate(150.37,-116.428)">
-			<title>Sheet.29</title>
-			<rect x="0" y="156.068" width="37.6342" height="37.6342" class="st1"/>
-		</g>
-		<g id="shape31-33" v:mID="31" v:groupContext="shape" transform="translate(-8.64168,-118.795)">
+		<g id="shape31-19" v:mID="31" v:groupContext="shape" transform="translate(-8.64168,-118.795)">
 			<title>Sheet.31</title>
-			<desc>слова</desc>
+			<desc>words</desc>
 			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
 			<v:textRect cx="23.1712" cy="177.252" width="46.35" height="32.9009"/>
 			<rect x="0" y="160.801" width="46.3425" height="32.9009" class="st2"/>
-			<text x="9.75" y="180.85" class="st3" v:langID="1049"><v:paragraph v:horizAlign="2"/><v:tabList/>слова</text>		</g>
-		<g id="shape32-36" v:mID="32" v:groupContext="shape" transform="translate(-47.401,-81.4897)">
+			<text x="10.3" y="180.85" class="st3" v:langID="1033"><v:paragraph v:horizAlign="2"/><v:tabList/>words</text>		</g>
+		<g id="shape32-22" v:mID="32" v:groupContext="shape" transform="translate(-47.401,-81.4897)">
 			<title>Sheet.32</title>
-			<desc>это</desc>
+			<desc>are</desc>
 			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
 			<v:textRect cx="42.5509" cy="177.252" width="85.11" height="32.9009"/>
 			<rect x="0" y="160.801" width="85.1018" height="32.9009" class="st2"/>
-			<text x="62.91" y="180.85" class="st3" v:langID="1049"><v:paragraph v:horizAlign="2"/><v:tabList/>это</text>		</g>
-		<g id="shape33-39" v:mID="33" v:groupContext="shape" transform="translate(-47.401,-44.1848)">
+			<text x="63.74" y="180.85" class="st3" v:langID="1033"><v:paragraph v:horizAlign="2"/><v:tabList/>are</text>		</g>
+		<g id="shape33-25" v:mID="33" v:groupContext="shape" transform="translate(-47.401,-44.1848)">
 			<title>Sheet.33</title>
-			<desc>всего</desc>
+			<desc>just</desc>
 			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
 			<v:textRect cx="42.5509" cy="177.252" width="85.11" height="32.9009"/>
 			<rect x="0" y="160.801" width="85.1018" height="32.9009" class="st2"/>
-			<text x="50.76" y="180.85" class="st3" v:langID="1049"><v:paragraph v:horizAlign="2"/><v:tabList/>всего</text>		</g>
-		<g id="shape34-42" v:mID="34" v:groupContext="shape" transform="translate(-68.4961,-6.87987)">
-			<title>Sheet.34</title>
-			<desc>лишь</desc>
-			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
-			<v:textRect cx="53.0984" cy="177.252" width="106.2" height="32.9009"/>
-			<rect x="0" y="160.801" width="106.197" height="32.9009" class="st2"/>
-			<text x="72.72" y="180.85" class="st3" v:langID="1049"><v:paragraph v:horizAlign="2"/><v:tabList/>лишь</text>		</g>
-		<g id="shape36-45" v:mID="36" v:groupContext="shape" transform="translate(235.182,-7.88844) rotate(90)">
+			<text x="62.33" y="180.85" class="st3" v:langID="1033"><v:paragraph v:horizAlign="2"/><v:tabList/>just</text>		</g>
+		<g id="shape36-28" v:mID="36" v:groupContext="shape" transform="translate(235.182,-7.88844) rotate(90)">
 			<title>Sheet.36</title>
-			<desc>слова</desc>
+			<desc>words</desc>
 			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
 			<v:textRect cx="23.1712" cy="177.252" width="46.35" height="32.9009"/>
 			<rect x="0" y="160.801" width="46.3425" height="32.9009" class="st2"/>
-			<text x="9.78" y="180.85" class="st4" v:langID="1049"><v:paragraph v:horizAlign="2"/><v:tabList/>слова</text>		</g>
-		<g id="shape37-48" v:mID="37" v:groupContext="shape" transform="translate(271.17,-46.6478) rotate(90)">
+			<text x="10.33" y="180.85" class="st4" v:langID="1033"><v:paragraph v:horizAlign="2"/><v:tabList/>words</text>		</g>
+		<g id="shape37-31" v:mID="37" v:groupContext="shape" transform="translate(271.17,-46.6478) rotate(90)">
 			<title>Sheet.37</title>
-			<desc>это</desc>
+			<desc>are</desc>
 			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
 			<v:textRect cx="42.5509" cy="177.252" width="85.11" height="32.9009"/>
 			<rect x="0" y="160.801" width="85.1018" height="32.9009" class="st2"/>
-			<text x="62.93" y="180.85" class="st4" v:langID="1049"><v:paragraph v:horizAlign="2"/><v:tabList/>это</text>		</g>
-		<g id="shape38-51" v:mID="38" v:groupContext="shape" transform="translate(308.804,-46.6478) rotate(90)">
+			<text x="63.76" y="180.85" class="st4" v:langID="1033"><v:paragraph v:horizAlign="2"/><v:tabList/>are</text>		</g>
+		<g id="shape38-34" v:mID="38" v:groupContext="shape" transform="translate(308.804,-46.6478) rotate(90)">
 			<title>Sheet.38</title>
-			<desc>всего</desc>
+			<desc>just</desc>
 			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
 			<v:textRect cx="42.5509" cy="177.252" width="85.11" height="32.9009"/>
 			<rect x="0" y="160.801" width="85.1018" height="32.9009" class="st2"/>
-			<text x="50.79" y="180.85" class="st4" v:langID="1049"><v:paragraph v:horizAlign="2"/><v:tabList/>всего</text>		</g>
-		<g id="shape39-54" v:mID="39" v:groupContext="shape" transform="translate(346.438,-67.7428) rotate(90)">
-			<title>Sheet.39</title>
-			<desc>лишь</desc>
-			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
-			<v:textRect cx="53.0984" cy="177.252" width="106.2" height="32.9009"/>
-			<rect x="0" y="160.801" width="106.197" height="32.9009" class="st2"/>
-			<text x="72.74" y="180.85" class="st4" v:langID="1049"><v:paragraph v:horizAlign="2"/><v:tabList/>лишь</text>		</g>
+			<text x="62.36" y="180.85" class="st4" v:langID="1033"><v:paragraph v:horizAlign="2"/><v:tabList/>just</text>		</g>
 	</g>
 </svg>
