@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 260" width="180" height="260" role="img" aria-label="Banana soup can outline">
+  <defs>
+    <clipPath id="canBody">
+      <rect x="20" y="40" width="140" height="180" rx="12" ry="12" />
+    </clipPath>
+    <linearGradient id="lidGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#5a4a44"/>
+      <stop offset="100%" stop-color="#2d2420"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Lid -->
+  <ellipse cx="90" cy="40" rx="70" ry="16" fill="url(#lidGrad)" stroke="#000" stroke-width="2"/>
+
+  <!-- Can outline -->
+  <rect x="20" y="40" width="140" height="180" rx="12" ry="12" fill="#fff" stroke="#000" stroke-width="2"/>
+
+  <!-- Top band placeholder (unfilled) -->
+  <g clip-path="url(#canBody)">
+    <rect x="20" y="40" width="140" height="95" fill="#fff8d8"/>
+    <line x1="20" y1="135" x2="160" y2="135" stroke="#000" stroke-width="1" opacity="0.25"/>
+  </g>
+
+  <!-- BANANA text -->
+  <text x="90" y="168" text-anchor="middle" font-size="24" font-weight="700" fill="#c6262e" font-family="Arial, Helvetica, sans-serif">BANANA</text>
+  <!-- SOUP text -->
+  <text x="90" y="198" text-anchor="middle" font-size="26" font-weight="900" fill="#2f7d32" font-family="Arial Black, Arial, Helvetica, sans-serif">SOUP</text>
+
+  <!-- Bottom rim -->
+  <ellipse cx="90" cy="220" rx="70" ry="14" fill="#fff" stroke="#000" stroke-width="2"/>
+</svg>
+
+
