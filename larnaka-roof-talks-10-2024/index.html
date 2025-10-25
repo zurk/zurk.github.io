@@ -1,0 +1,1383 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<title>Атлас банановых курсоров. Дегустируем ИИ за вас.</title>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:creator" content="@upd_by_k" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://zurk.github.io/larnaka-roof-talks-10-2024" />
+    <meta property="og:title" content="Атлас банановых курсоров. Дегустируем ИИ за вас." />
+    <meta property="og:description" content="Презентация о современных AI инструментах: Nano Banana, Cursor, OpenAI Atlas, Qalti и других." />
+    <link rel="stylesheet" href="shower/themes/ribbon/styles/screen-16x10.css">
+</head>
+<style>
+    body {
+        -webkit-font-smoothing: antialiased;
+        -webkit-tap-highlight-color: transparent;
+    }
+    -webkit-full-screen {
+        z-index: 1;
+        height: 100%;
+    }
+    :-webkit-full-screen .full section {
+        margin-left: -1px !important;
+        margin-top: -1px !important;
+    }
+    
+    .slide {
+        color: white;
+        background: url("pictures/banana-warhol-2-grid-bg.png") black;
+        background-size: cover;
+        position: relative;
+        padding: 0 !important;
+    }
+    .slide::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(255, 255, 255, 0.85);
+        z-index: 0;
+    }
+    .slide > * {
+        position: relative;
+        z-index: 1;
+    }
+    .slide h2 {
+        color: #333;
+        margin: 0 !important;
+        padding: 8px 0 5px 0 !important;
+        line-height: 1.2;
+    }
+    #fullscreen {
+        float: right;
+        height: 48px;
+        width: 48px;
+        background: none;
+        -webkit-appearance: none;
+        cursor: pointer;
+        border: none;
+        color: #3c3d40;
+        position: fixed;
+        right: 20px;
+    }
+    #fullscreen:hover {
+        color: #bababa;
+    }
+    #fullscreen:focus {
+        outline: none;
+    }
+    #fullscreen > i {
+        font-size: 36px;
+        text-align: center;
+    }
+    .slide p {
+        line-height: 1.25;
+    }
+    .slide::after {
+        display: none;
+    }
+    .center {
+        display: table;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    h2.bottom {
+        position: absolute;
+        bottom: 50px;
+    }
+    .important {
+        color: red;
+    }
+    .mono {
+        font-family: monospace;
+    }
+    .success {
+        color: green;
+    }
+    .vista {
+        background-size: contain !important;
+        background-repeat: no-repeat !important;
+        background-position: center !important;
+    }
+    .vista-cover {
+        background-size: cover !important;
+    }
+    i.fa {
+        font-style: normal;
+    }
+    ul.no-bullets > li::before {
+        display: none;
+        text-indent: 0;
+    }
+    ul.no-bullets > li {
+        text-indent: 0;
+    }
+    .slide a {
+        background: none;
+    }
+    .slide a:hover {
+        background: linear-gradient(to top,currentColor .09em,transparent .09em) repeat-x;
+    }
+    .white {
+        color: white !important;
+    }
+    .monofa {
+        width: 1.5em;
+        margin-right: 0.5em;
+        display: inline-block;
+        text-align: center;
+    }
+</style>
+<body class="shower list">
+
+	<header class="caption">
+		<button type="button" id="fullscreen" title="Go fullscreen" onclick="fullscreen()">⛶</button>
+		<h1>Атлас банановых курсоров. Дегустируем ИИ за вас.</h1>
+		<p>Константин Славнов, Larnaka Roof Talks, 25 октября 2025</p>
+	</header>
+
+	<!-- Титульный слайд -->
+	<section class="slide vista vista-cover" id="cover">
+        <div>
+    		<h2>Атлас банановых курсоров.<br>Дегустируем ИИ за вас.</h2>
+    		<p>
+                Константин Славнов
+            </p>
+        </div>
+
+		<style>
+            #cover::before {
+                display: none;
+            }
+            #cover h2 {
+                margin: 0;
+                text-align: center;
+                font-size: 70px;
+                line-height: 1.3;
+                color: #000000 !important;
+                text-shadow: 0 2px 4px rgba(255, 255, 255, 0.5);
+            }
+            #cover div {
+                width: auto;
+                max-width: 900px;
+                margin: 0 auto;
+                padding: 40px 60px;
+                background: rgba(255, 255, 255, 0.75);
+                border-radius: 20px;
+                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+                backdrop-filter: blur(5px);
+            }
+            #cover p {
+                margin: 30px 0 0;
+                text-align: center;
+                font-style: italic;
+                font-size: 28px;
+                color: #000000 !important;
+                text-shadow: 0 1px 2px rgba(255, 255, 255, 0.3);
+            }
+			#cover {
+				background: url("pictures/banana-warhol-2-grid-bg.png") black;
+                background-size: cover;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+			}
+        </style>
+    </section>
+
+    <!-- Слайд: А кто ты такой? -->
+    <section class="slide" id="about-me">
+        <div id="photo-container">
+            <img src="pictures/konst.png" id="photo">
+        </div>
+        <div id="content">
+            <h2>А кто ты такой?</h2>
+            <div id="text-content">
+                <p><strong>Костя Славнов.</strong></p>
+                <p>🦄 Founder and СЕО qalti.com</p>
+                <p>🚀 AI Agents for Mobile App testing.</p>
+                <br>
+                <p>Expert in AI and ML. 10y +</p>
+                <p>Wind surfing, yoga, karting.</p>
+            </div>
+            <div id="qr-container">
+                <img src="pictures/qr_tg.png" id="qr-code">
+                <p id="qr-caption">@upd_by_k</p>
+            </div>
+        </div>
+
+        <style>
+            #about-me {
+                padding: 0 !important;
+                display: flex;
+                flex-direction: row;
+            }
+            #about-me h2 {
+                padding: 8px 0 5px 0 !important;
+            }
+            #photo-container {
+                width: 300px;
+                height: 100%;
+                flex-shrink: 0;
+            }
+            #photo {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                object-position: center;
+            }
+            #content {
+                flex: 1;
+                padding: 50px 60px;
+                display: flex;
+                flex-direction: column;
+                position: relative;
+            }
+            #about-me h2 {
+                margin: 0 0 30px 0;
+                font-size: 48px;
+                color: #000000;
+            }
+            #text-content {
+                flex: 1;
+            }
+            #text-content p {
+                margin: 8px 0;
+                font-size: 24px;
+                line-height: 1.4;
+                color: #000000;
+            }
+            #text-content strong {
+                font-size: 28px;
+                color: #000000;
+            }
+            #qr-container {
+                text-align: right;
+                margin-top: 20px;
+            }
+            #qr-code {
+                width: 150px;
+                height: 150px;
+            }
+            #qr-caption {
+                margin-top: 10px;
+                font-size: 20px;
+                font-style: italic;
+                color: #000000;
+            }
+        </style>
+    </section>
+
+    <!-- Слайд: Титульный Nano Banana -->
+    <section class="slide" id="nano-banana-title">
+        <div class="section-title-wrapper">
+            <h2 class="section-title">Nano Banana</h2>
+        </div>
+        <style>
+            #nano-banana-title {
+                background: url("pictures/banana-warhol-2-grid-bg.png") black;
+                background-size: cover;
+                padding: 0 !important;
+            }
+            #nano-banana-title::before {
+                display: none;
+            }
+            #nano-banana-title .section-title-wrapper {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 100%;
+                width: 100%;
+            }
+            #nano-banana-title .section-title {
+                background: rgba(255, 255, 255, 0.92);
+                padding: 60px 100px;
+                border-radius: 20px;
+                box-shadow: 0 10px 50px rgba(0, 0, 0, 0.3);
+                backdrop-filter: blur(10px);
+                font-size: 90px;
+                font-weight: bold;
+                color: #000000;
+                margin: 0 !important;
+                text-align: center;
+            }
+        </style>
+    </section>
+
+    <!-- Слайд: Nano banana: bg -->
+    <section class="slide" id="nano-banana-intro">
+        <h2>Nano banana</h2>
+        <div class="content-center">
+            <img src="pictures/nano-banana-bg.png" class="big-image">
+        </div>
+        <div class="bottom-link">
+            <a href="https://nanobanana.ai/generator" target="_blank" class="link-large">nanobanana.ai/generator</a>
+        </div>
+        <style>
+            #nano-banana-intro h2 {
+                color: #000000;
+                text-align: center;
+                margin: 0 !important;
+                padding: 8px 0 5px 0 !important;
+                font-size: 48px;
+            }
+            #nano-banana-intro .content-center {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: calc(100% - 110px);
+                padding: 0;
+            }
+            #nano-banana-intro .bottom-link {
+                position: absolute;
+                bottom: 5px;
+                left: 0;
+                right: 0;
+                text-align: center;
+            }
+            #nano-banana-intro .link-large {
+                font-size: 28px;
+                color: #0066cc;
+                text-decoration: none;
+                font-weight: bold;
+            }
+            #nano-banana-intro .link-large:hover {
+                text-decoration: underline;
+            }
+            #nano-banana-intro .big-image {
+                max-width: 95%;
+                max-height: 95%;
+                object-fit: contain;
+                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+                border-radius: 10px;
+            }
+        </style>
+    </section>
+
+    <!-- Слайд: Nano banana: video 1 -->
+    <section class="slide" id="nano-banana-video1">
+        <h2>Nano banana</h2>
+        <div class="video-wrapper">
+            <video controls class="big-video">
+                <source src="pictures/nano-banana-1.mov" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        <style>
+            #nano-banana-video1 h2 {
+                color: #000000;
+                text-align: center;
+                margin: 0 !important;
+                padding: 8px 0 5px 0 !important;
+                font-size: 48px;
+            }
+            #nano-banana-video1 .video-wrapper {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: calc(100% - 60px);
+                padding: 0;
+            }
+            #nano-banana-video1 .big-video {
+                max-width: 95%;
+                max-height: 95%;
+                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+                border-radius: 10px;
+            }
+        </style>
+    </section>
+
+    <!-- Слайд: Nano banana: video 2 -->
+    <section class="slide" id="nano-banana-video2">
+        <h2>Nano banana</h2>
+        <div class="video-wrapper">
+            <video controls class="big-video">
+                <source src="pictures/nano-banana-2.mov" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        <style>
+            #nano-banana-video2 h2 {
+                color: #000000;
+                text-align: center;
+                margin: 0 !important;
+                padding: 8px 0 5px 0 !important;
+                font-size: 48px;
+            }
+            #nano-banana-video2 .video-wrapper {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: calc(100% - 60px);
+                padding: 0;
+            }
+            #nano-banana-video2 .big-video {
+                max-width: 95%;
+                max-height: 95%;
+                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+                border-radius: 10px;
+            }
+        </style>
+    </section>
+
+    <!-- Слайд: Nano banana: Fail -->
+    <section class="slide" id="nano-banana-fail">
+        <h2>Nano banana: Fail</h2>
+        <div class="image-center">
+            <img src="pictures/nano-banana-3-fail.png" class="full-image">
+        </div>
+        <style>
+            #nano-banana-fail h2 {
+                color: #000000;
+                text-align: center;
+                margin: 0 !important;
+                padding: 8px 0 5px 0 !important;
+                font-size: 48px;
+            }
+            #nano-banana-fail .image-center {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: calc(100% - 60px);
+                padding: 0;
+            }
+            #nano-banana-fail .full-image {
+                max-width: 95%;
+                max-height: 95%;
+                object-fit: contain;
+                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+                border-radius: 10px;
+            }
+        </style>
+    </section>
+
+    <!-- Слайд: Nano banana: marketing -->
+    <section class="slide" id="nano-banana-marketing">
+        <h2>Nano banana: marketing</h2>
+        <div class="two-images">
+            <img src="pictures/nano-qalti-before.jpg" class="side-image">
+            <img src="pictures/nano-qalti-after.png" class="side-image">
+        </div>
+        <style>
+            #nano-banana-marketing h2 {
+                color: #000000;
+                text-align: center;
+                margin: 0 !important;
+                padding: 8px 0 5px 0 !important;
+                font-size: 48px;
+            }
+            #nano-banana-marketing .two-images {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: calc(100% - 60px);
+                gap: 15px;
+                padding: 0 10px;
+            }
+            #nano-banana-marketing .side-image {
+                max-width: 49%;
+                max-height: 95%;
+                object-fit: contain;
+                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+                border-radius: 10px;
+            }
+        </style>
+    </section>
+
+    <!-- Слайд: Nano banana: edit -->
+    <section class="slide" id="nano-banana-edit1">
+        <h2>Nano banana: edit</h2>
+        <div class="image-center">
+            <img src="pictures/-мороженое+банан.png" class="full-image">
+        </div>
+        <style>
+            #nano-banana-edit1 h2 {
+                color: #000000;
+                text-align: center;
+                margin: 0 !important;
+                padding: 8px 0 5px 0 !important;
+                font-size: 48px;
+            }
+            #nano-banana-edit1 .image-center {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: calc(100% - 60px);
+                padding: 0;
+            }
+            #nano-banana-edit1 .full-image {
+                max-width: 95%;
+                max-height: 95%;
+                object-fit: contain;
+                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+                border-radius: 10px;
+            }
+        </style>
+    </section>
+
+    <!-- Слайд: Nano banana: edit (две картинки) -->
+    <section class="slide" id="nano-banana-edit1b">
+        <h2>Nano banana: edit</h2>
+        <div class="two-images">
+            <img src="pictures/исходное_с_мороженным.png" class="side-image">
+            <img src="pictures/банан.png" class="side-image">
+        </div>
+        <style>
+            #nano-banana-edit1b h2 {
+                color: #000000;
+                text-align: center;
+                margin: 0 !important;
+                padding: 8px 0 5px 0 !important;
+                font-size: 48px;
+            }
+            #nano-banana-edit1b .two-images {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: calc(100% - 60px);
+                gap: 15px;
+                padding: 0 10px;
+            }
+            #nano-banana-edit1b .side-image {
+                max-width: 49%;
+                max-height: 95%;
+                object-fit: contain;
+                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+                border-radius: 10px;
+            }
+        </style>
+    </section>
+
+    <!-- Слайд: Nano banana: edit 2 -->
+    <section class="slide" id="nano-banana-edit2">
+        <h2>Nano banana: edit 2</h2>
+        <div class="image-center">
+            <img src="pictures/банан+скотч_2.png" class="full-image">
+        </div>
+        <style>
+            #nano-banana-edit2 h2 {
+                color: #000000;
+                text-align: center;
+                margin: 0 !important;
+                padding: 8px 0 5px 0 !important;
+                font-size: 48px;
+            }
+            #nano-banana-edit2 .image-center {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: calc(100% - 60px);
+                padding: 0;
+            }
+            #nano-banana-edit2 .full-image {
+                max-width: 95%;
+                max-height: 95%;
+                object-fit: contain;
+                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+                border-radius: 10px;
+            }
+        </style>
+    </section>
+
+    <!-- Слайд: Nano banana: edit 2 (томаты) -->
+    <section class="slide" id="nano-banana-edit2b">
+        <h2>Nano banana: edit 2</h2>
+        <div class="image-center">
+            <img src="pictures/банка с томатами.png" class="full-image">
+        </div>
+        <style>
+            #nano-banana-edit2b h2 {
+                color: #000000;
+                text-align: center;
+                margin: 0 !important;
+                padding: 8px 0 5px 0 !important;
+                font-size: 48px;
+            }
+            #nano-banana-edit2b .image-center {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: calc(100% - 60px);
+                padding: 0;
+            }
+            #nano-banana-edit2b .full-image {
+                max-width: 95%;
+                max-height: 95%;
+                object-fit: contain;
+                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+                border-radius: 10px;
+            }
+        </style>
+    </section>
+
+    <!-- Слайд: Nano banana: edit 3 (два исходника) -->
+    <section class="slide" id="nano-banana-edit3">
+        <h2>Nano banana: edit 3</h2>
+        <div class="two-images">
+            <img src="pictures/исходник 2 я ем банан.jpg" class="side-image">
+            <img src="pictures/исходник я ем банан.jpg" class="side-image">
+        </div>
+        <style>
+            #nano-banana-edit3 h2 {
+                color: #000000;
+                text-align: center;
+                margin: 0 !important;
+                padding: 8px 0 5px 0 !important;
+                font-size: 48px;
+            }
+            #nano-banana-edit3 .two-images {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: calc(100% - 60px);
+                gap: 15px;
+                padding: 0 10px;
+            }
+            #nano-banana-edit3 .side-image {
+                max-width: 49%;
+                max-height: 95%;
+                object-fit: contain;
+                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+                border-radius: 10px;
+            }
+        </style>
+    </section>
+
+    <!-- Слайд: Nano banana: edit 3 (результат) -->
+    <section class="slide" id="nano-banana-edit3b">
+        <h2>Nano banana: edit 3</h2>
+        <div class="image-center">
+            <img src="pictures/я ем банан.png" class="full-image">
+        </div>
+        <style>
+            #nano-banana-edit3b h2 {
+                color: #000000;
+                text-align: center;
+                margin: 0 !important;
+                padding: 8px 0 5px 0 !important;
+                font-size: 48px;
+            }
+            #nano-banana-edit3b .image-center {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: calc(100% - 60px);
+                padding: 0;
+            }
+            #nano-banana-edit3b .full-image {
+                max-width: 95%;
+                max-height: 95%;
+                object-fit: contain;
+                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+                border-radius: 10px;
+            }
+        </style>
+    </section>
+
+    <!-- Слайд: OpenAI Atlas -->
+    <section class="slide" id="atlas-intro">
+        <h2 class="shout">OpenAI Atlas</h2>
+        <style>
+            #atlas-intro h2 {
+                font-size: 100px;
+                color: #000000;
+            }
+        </style>
+    </section>
+
+    <!-- Слайд: OpenAI Atlas: meme -->
+    <section class="slide" id="atlas-meme">
+        <h2>OpenAI Atlas: meme</h2>
+        <div class="video-container">
+            <a href="https://youtu.be/zkOTUyZRR7o" target="_blank" class="video-link">
+                <img src="pictures/atlas-1-preview.jpg" class="video-preview">
+                <div class="play-button">▶</div>
+            </a>
+        </div>
+        <div class="video-caption">
+            <p>Кликните для просмотра на YouTube</p>
+        </div>
+        <style>
+            #atlas-meme h2 {
+                color: #000000;
+                text-align: center;
+                margin: 0 !important;
+                padding: 8px 0 5px 0 !important;
+                font-size: 48px;
+            }
+            #atlas-meme .video-container {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: calc(100% - 100px);
+                padding: 0;
+            }
+            #atlas-meme .video-link {
+                position: relative;
+                display: block;
+                max-width: 95%;
+                max-height: 95%;
+                cursor: pointer;
+            }
+            #atlas-meme .video-preview {
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+                border-radius: 10px;
+                transition: transform 0.2s, box-shadow 0.2s;
+            }
+            #atlas-meme .video-link:hover .video-preview {
+                transform: scale(1.02);
+                box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+            }
+            #atlas-meme .play-button {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 100px;
+                height: 100px;
+                background: rgba(255, 0, 0, 0.9);
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 48px;
+                color: white;
+                padding-left: 8px;
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+                transition: transform 0.2s;
+            }
+            #atlas-meme .video-link:hover .play-button {
+                transform: translate(-50%, -50%) scale(1.1);
+            }
+            #atlas-meme .video-caption {
+                position: absolute;
+                bottom: 10px;
+                left: 0;
+                right: 0;
+                text-align: center;
+            }
+            #atlas-meme .video-caption p {
+                font-size: 18px;
+                color: #666;
+                margin: 0;
+            }
+        </style>
+    </section>
+
+    <!-- Слайд: OpenAI Atlas: shopping -->
+    <section class="slide" id="atlas-shopping">
+        <h2>OpenAI Atlas: shopping</h2>
+        <div class="video-container">
+            <a href="https://youtu.be/mLTuQtWoxz8" target="_blank" class="video-link">
+                <img src="pictures/atlas-2-preview.jpg" class="video-preview">
+                <div class="play-button">▶</div>
+            </a>
+        </div>
+        <div class="video-caption">
+            <p>Кликните для просмотра на YouTube</p>
+        </div>
+        <style>
+            #atlas-shopping h2 {
+                color: #000000;
+                text-align: center;
+                margin: 0 !important;
+                padding: 8px 0 5px 0 !important;
+                font-size: 48px;
+            }
+            #atlas-shopping .video-container {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: calc(100% - 100px);
+                padding: 0;
+            }
+            #atlas-shopping .video-link {
+                position: relative;
+                display: block;
+                max-width: 95%;
+                max-height: 95%;
+                cursor: pointer;
+            }
+            #atlas-shopping .video-preview {
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+                border-radius: 10px;
+                transition: transform 0.2s, box-shadow 0.2s;
+            }
+            #atlas-shopping .video-link:hover .video-preview {
+                transform: scale(1.02);
+                box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+            }
+            #atlas-shopping .play-button {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 100px;
+                height: 100px;
+                background: rgba(255, 0, 0, 0.9);
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 48px;
+                color: white;
+                padding-left: 8px;
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+                transition: transform 0.2s;
+            }
+            #atlas-shopping .video-link:hover .play-button {
+                transform: translate(-50%, -50%) scale(1.1);
+            }
+            #atlas-shopping .video-caption {
+                position: absolute;
+                bottom: 10px;
+                left: 0;
+                right: 0;
+                text-align: center;
+            }
+            #atlas-shopping .video-caption p {
+                font-size: 18px;
+                color: #666;
+                margin: 0;
+            }
+        </style>
+    </section>
+
+    <!-- Слайд: Cursor для не программиста -->
+    <section class="slide" id="cursor-intro">
+        <h2>Cursor для не программиста</h2>
+        <div class="content-center">
+            <img src="pictures/cursor.png" class="big-image">
+        </div>
+        <div class="bottom-link">
+            <a href="https://cursor.com" target="_blank" class="link-large">cursor.com</a>
+        </div>
+        <style>
+            #cursor-intro h2 {
+                color: #000000;
+                text-align: center;
+                margin: 0 !important;
+                padding: 8px 0 5px 0 !important;
+                font-size: 48px;
+            }
+            #cursor-intro .content-center {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: calc(100% - 110px);
+                padding: 0;
+            }
+            #cursor-intro .bottom-link {
+                position: absolute;
+                bottom: 5px;
+                left: 0;
+                right: 0;
+                text-align: center;
+            }
+            #cursor-intro .link-large {
+                font-size: 28px;
+                color: #0066cc;
+                text-decoration: none;
+                font-weight: bold;
+            }
+            #cursor-intro .link-large:hover {
+                text-decoration: underline;
+            }
+            #cursor-intro .big-image {
+                max-width: 95%;
+                max-height: 95%;
+                object-fit: contain;
+                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+                border-radius: 10px;
+            }
+        </style>
+    </section>
+
+    <!-- Слайд: Как я собирал эту презентацию (текст) -->
+    <section class="slide" id="how-i-build-text">
+        <h2>Как я собирал эту презентацию</h2>
+        <div class="text-center">
+            <p class="big-text">Конечно же в курсоре!</p>
+        </div>
+        <style>
+            #how-i-build-text h2 {
+                color: #000000;
+                text-align: center;
+                margin: 0 !important;
+                padding: 8px 0 5px 0 !important;
+                font-size: 48px;
+            }
+            #how-i-build-text .text-center {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: calc(100% - 60px);
+                padding: 0;
+            }
+            #how-i-build-text .big-text {
+                font-size: 72px;
+                font-weight: bold;
+                color: #000000;
+                text-align: center;
+            }
+        </style>
+    </section>
+
+    <!-- Слайд: Как я собирал эту презентацию (картинка) -->
+    <section class="slide" id="how-i-build">
+        <h2>Как я собирал эту презентацию</h2>
+        <div class="content-center">
+            <img src="pictures/how-i-build-this-presentation.png" class="big-image">
+        </div>
+        <div class="bottom-link">
+            <a href="https://zurk.github.io/larnaka-roof-talks-10-2024/" target="_blank" class="link-large">zurk.github.io/larnaka-roof-talks-10-2024/</a>
+        </div>
+        <style>
+            #how-i-build h2 {
+                color: #000000;
+                text-align: center;
+                margin: 0 !important;
+                padding: 8px 0 5px 0 !important;
+                font-size: 48px;
+            }
+            #how-i-build .content-center {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: calc(100% - 110px);
+                padding: 0;
+            }
+            #how-i-build .bottom-link {
+                position: absolute;
+                bottom: 5px;
+                left: 0;
+                right: 0;
+                text-align: center;
+            }
+            #how-i-build .link-large {
+                font-size: 28px;
+                color: #0066cc;
+                text-decoration: none;
+                font-weight: bold;
+            }
+            #how-i-build .link-large:hover {
+                text-decoration: underline;
+            }
+            #how-i-build .big-image {
+                max-width: 95%;
+                max-height: 95%;
+                object-fit: contain;
+                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+                border-radius: 10px;
+            }
+        </style>
+    </section>
+
+    <!-- Слайд: Как я собирал эту презентацию (видео) -->
+    <section class="slide" id="how-i-build-video">
+        <h2>Как я собирал эту презентацию</h2>
+        <div class="video-container">
+            <div class="placeholder">
+                <p class="placeholder-text">📹 Видео будет добавлено позже</p>
+                <p class="placeholder-hint">YouTube ссылка: [PLACEHOLDER]</p>
+            </div>
+        </div>
+        <style>
+            #how-i-build-video h2 {
+                color: #000000;
+                text-align: center;
+                margin: 0 !important;
+                padding: 8px 0 5px 0 !important;
+                font-size: 48px;
+            }
+            #how-i-build-video .video-container {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: calc(100% - 100px);
+                padding: 0;
+            }
+            #how-i-build-video .placeholder {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                width: 90%;
+                height: 90%;
+                background: rgba(0, 0, 0, 0.05);
+                border: 3px dashed #666;
+                border-radius: 10px;
+            }
+            #how-i-build-video .placeholder-text {
+                font-size: 48px;
+                font-weight: bold;
+                color: #333;
+                margin: 0 0 20px 0;
+            }
+            #how-i-build-video .placeholder-hint {
+                font-size: 24px;
+                color: #666;
+                margin: 0;
+                font-style: italic;
+            }
+        </style>
+    </section>
+
+    <!-- Слайд: Демо для Qalti -->
+    <section class="slide" id="qalti-demo">
+        <h2>Демо для Qalti</h2>
+        <div class="content-center">
+            <img src="pictures/qalti-demo.png" class="big-image">
+        </div>
+        <div class="bottom-link">
+            <a href="https://github.com/qalti/qalti" target="_blank" class="link-large">github.com/qalti/qalti</a>
+        </div>
+        <style>
+            #qalti-demo h2 {
+                color: #000000;
+                text-align: center;
+                margin: 0 !important;
+                padding: 8px 0 5px 0 !important;
+                font-size: 48px;
+            }
+            #qalti-demo .content-center {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: calc(100% - 110px);
+                padding: 0;
+            }
+            #qalti-demo .bottom-link {
+                position: absolute;
+                bottom: 5px;
+                left: 0;
+                right: 0;
+                text-align: center;
+            }
+            #qalti-demo .link-large {
+                font-size: 28px;
+                color: #0066cc;
+                text-decoration: none;
+                font-weight: bold;
+            }
+            #qalti-demo .link-large:hover {
+                text-decoration: underline;
+            }
+            #qalti-demo .big-image {
+                max-width: 95%;
+                max-height: 95%;
+                object-fit: contain;
+                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+                border-radius: 10px;
+            }
+        </style>
+    </section>
+
+    <!-- Слайд: Демо для Qalti (meme) -->
+    <section class="slide" id="qalti-meme">
+        <h2>Демо для Qalti</h2>
+        <div class="image-center">
+            <img src="pictures/meme.jpg" class="full-image">
+        </div>
+        <style>
+            #qalti-meme h2 {
+                color: #000000;
+                text-align: center;
+                margin: 0 !important;
+                padding: 8px 0 5px 0 !important;
+                font-size: 48px;
+            }
+            #qalti-meme .image-center {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: calc(100% - 60px);
+                padding: 0;
+            }
+            #qalti-meme .full-image {
+                max-width: 95%;
+                max-height: 95%;
+                object-fit: contain;
+                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+                border-radius: 10px;
+            }
+        </style>
+    </section>
+
+    <!-- Слайд: Демо для Qalti: remotion -->
+    <section class="slide" id="qalti-remotion">
+        <h2>Демо для Qalti: remotion</h2>
+        <div class="content-center">
+            <img src="pictures/remotion.png" class="big-image">
+        </div>
+        <div class="bottom-link">
+            <a href="https://www.remotion.dev/" target="_blank" class="link-large">remotion.dev</a>
+        </div>
+        <style>
+            #qalti-remotion h2 {
+                color: #000000;
+                text-align: center;
+                margin: 0 !important;
+                padding: 8px 0 5px 0 !important;
+                font-size: 48px;
+            }
+            #qalti-remotion .content-center {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: calc(100% - 110px);
+                padding: 0;
+            }
+            #qalti-remotion .bottom-link {
+                position: absolute;
+                bottom: 5px;
+                left: 0;
+                right: 0;
+                text-align: center;
+            }
+            #qalti-remotion .link-large {
+                font-size: 28px;
+                color: #0066cc;
+                text-decoration: none;
+                font-weight: bold;
+            }
+            #qalti-remotion .link-large:hover {
+                text-decoration: underline;
+            }
+            #qalti-remotion .big-image {
+                max-width: 95%;
+                max-height: 95%;
+                object-fit: contain;
+                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+                border-radius: 10px;
+            }
+        </style>
+    </section>
+
+    <!-- Слайд: Cursor + Remotion = :love: -->
+    <section class="slide" id="cursor-remotion-love">
+        <h2>Cursor + Remotion = ❤️</h2>
+        <div class="image-center">
+            <img src="pictures/how-I-create-a-demo-video-with-remotion.png" class="full-image">
+        </div>
+        <style>
+            #cursor-remotion-love h2 {
+                color: #000000;
+                text-align: center;
+                margin: 0 !important;
+                padding: 8px 0 5px 0 !important;
+                font-size: 48px;
+            }
+            #cursor-remotion-love .image-center {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: calc(100% - 60px);
+                padding: 0;
+            }
+            #cursor-remotion-love .full-image {
+                max-width: 95%;
+                max-height: 95%;
+                object-fit: contain;
+                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+                border-radius: 10px;
+            }
+        </style>
+    </section>
+
+    <!-- Слайд: MacWhisper -->
+    <section class="slide" id="macwhisper">
+        <h2>MacWhisper</h2>
+        <div class="content-center">
+            <img src="pictures/macwhisper.png" class="big-image">
+        </div>
+        <div class="bottom-link">
+            <a href="https://goodsnooze.gumroad.com/l/macwhisper" target="_blank" class="link-large">goodsnooze.gumroad.com/l/macwhisper</a>
+        </div>
+        <style>
+            #macwhisper h2 {
+                color: #000000;
+                text-align: center;
+                margin: 0 !important;
+                padding: 8px 0 5px 0 !important;
+                font-size: 48px;
+            }
+            #macwhisper .content-center {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: calc(100% - 110px);
+                padding: 0;
+            }
+            #macwhisper .bottom-link {
+                position: absolute;
+                bottom: 5px;
+                left: 0;
+                right: 0;
+                text-align: center;
+            }
+            #macwhisper .link-large {
+                font-size: 28px;
+                color: #0066cc;
+                text-decoration: none;
+                font-weight: bold;
+            }
+            #macwhisper .link-large:hover {
+                text-decoration: underline;
+            }
+            #macwhisper .big-image {
+                max-width: 95%;
+                max-height: 95%;
+                object-fit: contain;
+                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+                border-radius: 10px;
+            }
+        </style>
+    </section>
+
+    <!-- Слайд: Все ссылки -->
+    <section class="slide" id="all-links">
+        <h2>Полезные ссылки</h2>
+        <div class="content-wrapper">
+            <div class="links-column">
+                <ul class="links-list">
+                    <li>
+                        <div class="link-title">🍌 AI генерация изображений</div>
+                        <a href="https://nanobanana.ai/generator" target="_blank">nanobanana.ai/generator</a>
+                    </li>
+                    <li>
+                        <div class="link-title">💻 AI-powered code editor</div>
+                        <a href="https://cursor.com" target="_blank">cursor.com</a>
+                    </li>
+                    <li>
+                        <div class="link-title">🤖 AI Agents for Mobile App testing</div>
+                        <a href="https://github.com/qalti/qalti" target="_blank">github.com/qalti/qalti</a>
+                    </li>
+                    <li>
+                        <div class="link-title">🎬 Create videos programmatically</div>
+                        <a href="https://www.remotion.dev/" target="_blank">remotion.dev</a>
+                    </li>
+                    <li>
+                        <div class="link-title">🎤 Audio transcription</div>
+                        <a href="https://goodsnooze.gumroad.com/l/macwhisper" target="_blank">goodsnooze.gumroad.com/l/macwhisper</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="qr-column">
+                <img src="pictures/qr_tg.png" id="final-qr-code">
+                <p id="final-qr-caption">@upd_by_k</p>
+            </div>
+        </div>
+        <style>
+            #all-links {
+                padding: 0 !important;
+            }
+            #all-links h2 {
+                color: #000000;
+                text-align: center;
+                margin: 0 !important;
+                padding: 15px 0 !important;
+                font-size: 48px;
+            }
+            #all-links .content-wrapper {
+                display: flex;
+                flex-direction: row;
+                height: calc(100% - 80px);
+                padding: 0;
+            }
+            #all-links .links-column {
+                flex: 1;
+                display: flex;
+                align-items: center;
+                padding: 0 60px 0 80px;
+            }
+            #all-links .qr-column {
+                width: 350px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                padding: 0 80px 0 40px;
+            }
+            #all-links .links-list {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+            }
+            #all-links .links-list li {
+                color: #000000;
+                margin: 0 0 30px 0;
+            }
+            #all-links .links-list .link-title {
+                font-size: 26px;
+                font-weight: normal;
+                color: #000000;
+                margin-bottom: 5px;
+            }
+            #all-links .links-list a {
+                color: #0066cc;
+                text-decoration: none;
+                font-weight: normal;
+                font-size: 24px;
+                display: block;
+            }
+            #all-links .links-list a:hover {
+                text-decoration: underline;
+            }
+            #all-links #final-qr-code {
+                width: 250px;
+                height: 250px;
+                margin-bottom: 20px;
+            }
+            #all-links #final-qr-caption {
+                font-size: 28px;
+                font-weight: bold;
+                color: #000000;
+                margin: 0;
+            }
+        </style>
+    </section>
+
+	<div class="progress"></div>
+
+	<script src="shower/shower.min.js"></script>
+	<script>
+    function fullscreen() {
+        if (!document.fullscreenElement && !document.mozFullScreenElement &&
+			!document.webkitFullscreenElement) {
+            var body = document.getElementsByTagName("html")[0];
+            if (body.requestFullscreen) {
+                body.requestFullscreen();
+            } else if (body.mozRequestFullScreen) {
+                body.mozRequestFullScreen();
+            } else if (body.webkitRequestFullScreen) {
+                body.webkitRequestFullScreen();
+            }
+            document.getElementById("fullscreen").title = "Return";
+        } else {
+            if (document.cancelFullScreen) {
+                document.cancelFullScreen();
+            } else if (document.mozCancelFullScreen) {
+                document.mozCancelFullScreen();
+            } else if (document.webkitCancelFullScreen) {
+                document.webkitCancelFullScreen();
+            }
+            document.getElementById("fullscreen").title = "Go fullscreen";
+        }
+    }
+    </script>
+</body>
+</html>
+
