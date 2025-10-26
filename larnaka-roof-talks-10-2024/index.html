@@ -884,15 +884,23 @@
     <!-- Слайд: Как я собирал эту презентацию (видео) -->
     <section class="slide" id="how-i-build-video">
         <h2>Как я собирал эту презентацию</h2>
-        <div class="video-container">
-            <a href="https://youtu.be/sz5laF3w8n8" target="_blank" class="video-link">
-                <img src="pictures/cursor-presentation-preview.jpg" class="video-preview">
-                <div class="play-button">▶</div>
-            </a>
-        </div>
-        <div class="video-caption">
-            <p>Кликните для просмотра на YouTube</p>
-        </div>
+		<div class="video-container">
+			<div class="iframe-wrapper">
+				<iframe
+					src="https://www.youtube-nocookie.com/embed/sz5laF3w8n8?rel=0&modestbranding=1&playsinline=1"
+					title="Как я собирал эту презентацию"
+					loading="lazy"
+					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+					allowfullscreen
+				></iframe>
+			</div>
+		</div>
+		<div class="video-caption">
+			<p>
+				Если плеер не загрузился, откройте на 
+				<a href="https://youtu.be/sz5laF3w8n8" target="_blank" rel="noopener noreferrer">YouTube</a>
+			</p>
+		</div>
         <style>
             #how-i-build-video h2 {
                 color: #000000;
@@ -901,53 +909,29 @@
                 padding: 8px 0 5px 0 !important;
                 font-size: 48px;
             }
-            #how-i-build-video .video-container {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                height: calc(100% - 100px);
-                padding: 0;
-            }
-            #how-i-build-video .video-link {
-                position: relative;
-                display: block;
-                max-width: 95%;
-                max-height: 95%;
-                cursor: pointer;
-            }
-            #how-i-build-video .video-preview {
-                width: 100%;
-                height: 100%;
-                object-fit: contain;
-                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-                border-radius: 10px;
-                transition: transform 0.2s, box-shadow 0.2s;
-            }
-            #how-i-build-video .video-link:hover .video-preview {
-                transform: scale(1.02);
-                box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
-            }
-            #how-i-build-video .play-button {
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                width: 100px;
-                height: 100px;
-                background: rgba(255, 0, 0, 0.9);
-                border-radius: 50%;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                font-size: 48px;
-                color: white;
-                padding-left: 8px;
-                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-                transition: transform 0.2s;
-            }
-            #how-i-build-video .video-link:hover .play-button {
-                transform: translate(-50%, -50%) scale(1.1);
-            }
+			#how-i-build-video .video-container {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				height: calc(100% - 120px);
+				padding: 0;
+			}
+			#how-i-build-video .iframe-wrapper {
+				position: relative;
+				width: 95%;
+				max-width: 1280px;
+				aspect-ratio: 16 / 9;
+				box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+				border-radius: 10px;
+				overflow: hidden;
+			}
+			#how-i-build-video .iframe-wrapper iframe {
+				position: absolute;
+				inset: 0;
+				width: 100%;
+				height: 100%;
+				border: 0;
+			}
             #how-i-build-video .video-caption {
                 position: absolute;
                 bottom: 10px;
@@ -1036,16 +1020,24 @@
 
     <!-- Слайд: OpenAI Atlas: meme -->
     <section class="slide" id="atlas-meme">
-        <h2>OpenAI Atlas: meme</h2>
-        <div class="video-container">
-            <a href="https://youtu.be/zkOTUyZRR7o" target="_blank" class="video-link">
-                <img src="pictures/atlas-1-preview.jpg" class="video-preview">
-                <div class="play-button">▶</div>
-            </a>
-        </div>
-        <div class="video-caption">
-            <p>Кликните для просмотра на YouTube</p>
-        </div>
+		<h2>OpenAI Atlas: meme</h2>
+		<div class="video-container">
+			<div class="iframe-wrapper">
+				<iframe
+					src="https://www.youtube-nocookie.com/embed/zkOTUyZRR7o?rel=0&modestbranding=1&playsinline=1"
+					title="OpenAI Atlas: meme"
+					loading="lazy"
+					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+					allowfullscreen
+				></iframe>
+			</div>
+		</div>
+		<div class="video-caption">
+			<p>
+				Если плеер не загрузился, откройте на 
+				<a href="https://youtu.be/zkOTUyZRR7o" target="_blank" rel="noopener noreferrer">YouTube</a>
+			</p>
+		</div>
         <style>
             #atlas-meme h2 {
                 color: #000000;
@@ -1054,53 +1046,29 @@
                 padding: 8px 0 5px 0 !important;
                 font-size: 48px;
             }
-            #atlas-meme .video-container {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                height: calc(100% - 100px);
-                padding: 0;
-            }
-            #atlas-meme .video-link {
-                position: relative;
-                display: block;
-                max-width: 95%;
-                max-height: 95%;
-                cursor: pointer;
-            }
-            #atlas-meme .video-preview {
-                width: 100%;
-                height: 100%;
-                object-fit: contain;
-                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-                border-radius: 10px;
-                transition: transform 0.2s, box-shadow 0.2s;
-            }
-            #atlas-meme .video-link:hover .video-preview {
-                transform: scale(1.02);
-                box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
-            }
-            #atlas-meme .play-button {
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                width: 100px;
-                height: 100px;
-                background: rgba(255, 0, 0, 0.9);
-                border-radius: 50%;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                font-size: 48px;
-                color: white;
-                padding-left: 8px;
-                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-                transition: transform 0.2s;
-            }
-            #atlas-meme .video-link:hover .play-button {
-                transform: translate(-50%, -50%) scale(1.1);
-            }
+			#atlas-meme .video-container {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				height: calc(100% - 120px);
+				padding: 0;
+			}
+			#atlas-meme .iframe-wrapper {
+				position: relative;
+				width: 95%;
+				max-width: 1280px;
+				aspect-ratio: 16 / 9;
+				box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+				border-radius: 10px;
+				overflow: hidden;
+			}
+			#atlas-meme .iframe-wrapper iframe {
+				position: absolute;
+				inset: 0;
+				width: 100%;
+				height: 100%;
+				border: 0;
+			}
             #atlas-meme .video-caption {
                 position: absolute;
                 bottom: 10px;
@@ -1118,16 +1086,24 @@
 
     <!-- Слайд: OpenAI Atlas: shopping -->
     <section class="slide" id="atlas-shopping">
-        <h2>OpenAI Atlas: shopping</h2>
-        <div class="video-container">
-            <a href="https://youtu.be/mLTuQtWoxz8" target="_blank" class="video-link">
-                <img src="pictures/atlas-2-preview.jpg" class="video-preview">
-                <div class="play-button">▶</div>
-            </a>
-        </div>
-        <div class="video-caption">
-            <p>Кликните для просмотра на YouTube</p>
-        </div>
+		<h2>OpenAI Atlas: shopping</h2>
+		<div class="video-container">
+			<div class="iframe-wrapper">
+				<iframe
+					src="https://www.youtube-nocookie.com/embed/mLTuQtWoxz8?rel=0&modestbranding=1&playsinline=1"
+					title="OpenAI Atlas: shopping"
+					loading="lazy"
+					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+					allowfullscreen
+				></iframe>
+			</div>
+		</div>
+		<div class="video-caption">
+			<p>
+				Если плеер не загрузился, откройте на 
+				<a href="https://youtu.be/mLTuQtWoxz8" target="_blank" rel="noopener noreferrer">YouTube</a>
+			</p>
+		</div>
         <style>
             #atlas-shopping h2 {
                 color: #000000;
@@ -1136,53 +1112,29 @@
                 padding: 8px 0 5px 0 !important;
                 font-size: 48px;
             }
-            #atlas-shopping .video-container {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                height: calc(100% - 100px);
-                padding: 0;
-            }
-            #atlas-shopping .video-link {
-                position: relative;
-                display: block;
-                max-width: 95%;
-                max-height: 95%;
-                cursor: pointer;
-            }
-            #atlas-shopping .video-preview {
-                width: 100%;
-                height: 100%;
-                object-fit: contain;
-                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-                border-radius: 10px;
-                transition: transform 0.2s, box-shadow 0.2s;
-            }
-            #atlas-shopping .video-link:hover .video-preview {
-                transform: scale(1.02);
-                box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
-            }
-            #atlas-shopping .play-button {
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                width: 100px;
-                height: 100px;
-                background: rgba(255, 0, 0, 0.9);
-                border-radius: 50%;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                font-size: 48px;
-                color: white;
-                padding-left: 8px;
-                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-                transition: transform 0.2s;
-            }
-            #atlas-shopping .video-link:hover .play-button {
-                transform: translate(-50%, -50%) scale(1.1);
-            }
+			#atlas-shopping .video-container {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				height: calc(100% - 120px);
+				padding: 0;
+			}
+			#atlas-shopping .iframe-wrapper {
+				position: relative;
+				width: 95%;
+				max-width: 1280px;
+				aspect-ratio: 16 / 9;
+				box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+				border-radius: 10px;
+				overflow: hidden;
+			}
+			#atlas-shopping .iframe-wrapper iframe {
+				position: absolute;
+				inset: 0;
+				width: 100%;
+				height: 100%;
+				border: 0;
+			}
             #atlas-shopping .video-caption {
                 position: absolute;
                 bottom: 10px;
